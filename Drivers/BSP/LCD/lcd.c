@@ -817,28 +817,19 @@ void lcd_init(void)
         lcd_ssd_backlight_set(100); /* 背光设置为最亮 */
     }
 
-    /* 由于不同屏幕的写时序不同，这里的时序可以根据自己的屏幕进行修改
-      （若插上长排线对时序也会有影响，需要自己根据情况修改） */
     /* 初始化完成以后,提速 */
-    if (lcddev.id == 0x7789)
+    if (lcddev.id == 0x7789 || lcddev.id == 0x9341 || lcddev.id == 0x1963)  /* 7789/9341/1963 提速 */
     {
         /* 重新配置写时序控制寄存器的时序 */
         fsmc_write_handle.AddressSetupTime = 3; /* 地址建立时间(ADDSET)为3个fsmc_ker_ck=6*3=18ns */
         fsmc_write_handle.DataSetupTime = 3;    /* 数据保持时间(DATAST)为3个fsmc_ker_ck=6*3=18ns */
         FSMC_NORSRAM_Extended_Timing_Init(g_sram_handle.Extended, &fsmc_write_handle, g_sram_handle.Init.NSBank, g_sram_handle.Init.ExtendedMode);
     }
-    else if (lcddev.id == 0x9806 || lcddev.id == 0x9341 || lcddev.id == 0x5510)
+    else if (lcddev.id == 0x5310 || lcddev.id == 0x7796 || lcddev.id == 0x5510 || lcddev.id == 0x9806)  /* 如果是这几个IC, 则设置WR时序为最快 */
     {
         /* 重新配置写时序控制寄存器的时序 */
         fsmc_write_handle.AddressSetupTime = 2; /* 地址建立时间(ADDSET)为2个fsmc_ker_ck=6*2=12ns */
         fsmc_write_handle.DataSetupTime = 2;    /* 数据保持时间(DATAST)为2个fsmc_ker_ck=6*2=12ns */
-        FSMC_NORSRAM_Extended_Timing_Init(g_sram_handle.Extended, &fsmc_write_handle, g_sram_handle.Init.NSBank, g_sram_handle.Init.ExtendedMode);
-    }
-    else if (lcddev.id == 0x5310 || lcddev.id == 0x7796 || lcddev.id == 0x1963)
-    {
-        /* 重新配置写时序控制寄存器的时序 */
-        fsmc_write_handle.AddressSetupTime = 1; /* 地址建立时间(ADDSET)为1个fsmc_ker_ck=6*1=6ns */
-        fsmc_write_handle.DataSetupTime = 1;    /* 数据保持时间(DATAST)为1个fsmc_ker_ck=6*1=6ns */
         FSMC_NORSRAM_Extended_Timing_Init(g_sram_handle.Extended, &fsmc_write_handle, g_sram_handle.Init.NSBank, g_sram_handle.Init.ExtendedMode);
     }
 

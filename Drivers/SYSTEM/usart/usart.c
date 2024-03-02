@@ -27,10 +27,10 @@
 #include "./SYSTEM/usart/usart.h"
 
 
-/* 如果使用os,则包括下面的头文件即可 */
-#if SYS_SUPPORT_OS
-#include "os.h"                               /* os 使用 */
-#endif
+// /* 如果使用os,则包括下面的头文件即可 */
+// #if SYS_SUPPORT_OS
+// #include "os.h"                               /* os 使用 */
+// #endif
 
 /******************************************************************************************/
 /* 加入以下代码, 支持printf函数, 而不需要选择use MicroLIB */
@@ -210,15 +210,15 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
  */
 void USART_UX_IRQHandler(void)
 { 
-#if SYS_SUPPORT_OS                              /* 使用OS */
-    OSIntEnter();    
-#endif
+//#if SYS_SUPPORT_OS                              /* 使用OS */
+//    OSIntEnter();    
+//#endif
 
     HAL_UART_IRQHandler(&g_uart1_handle);       /* 调用HAL库中断处理公用函数 */
 
-#if SYS_SUPPORT_OS                              /* 使用OS */
-    OSIntExit();
-#endif
+//#if SYS_SUPPORT_OS                              /* 使用OS */
+//    OSIntExit();
+//#endif
 }
 
 #endif

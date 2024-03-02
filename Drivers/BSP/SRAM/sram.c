@@ -9,7 +9,7 @@
  ****************************************************************************************************
  * @attention
  *
- * 实验平台:正点原子 探索者 F407开发板
+ * 实验平台:正点原子 STM32F407开发板
  * 在线视频:www.yuanzige.com
  * 技术论坛:www.openedv.com
  * 公司网址:www.alientek.com
@@ -24,6 +24,7 @@
 
 #include "./BSP/SRAM/sram.h"
 #include "./SYSTEM/usart/usart.h"
+#include "./XMRAM/XMRAM.h"
 
 
 SRAM_HandleTypeDef g_sram_handler; /* SRAM句柄 */
@@ -38,6 +39,7 @@ void sram_init(void)
     GPIO_InitTypeDef gpio_init_struct;
     FSMC_NORSRAM_TimingTypeDef fsmc_readwritetim;
 
+    XmRamInit();
     SRAM_CS_GPIO_CLK_ENABLE();    /* SRAM_CS脚时钟使能 */
     SRAM_WR_GPIO_CLK_ENABLE();    /* SRAM_WR脚时钟使能 */
     SRAM_RD_GPIO_CLK_ENABLE();    /* SRAM_RD脚时钟使能 */
@@ -60,6 +62,7 @@ void sram_init(void)
     gpio_init_struct.Pin = SRAM_RD_GPIO_PIN;
     HAL_GPIO_Init(SRAM_RD_GPIO_PORT, &gpio_init_struct); /* SRAM_CS引脚模式设置 */
 
+    
     /* PD0,1,4,5,8~15 */
     gpio_init_struct.Pin = GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_8 | GPIO_PIN_9 | 
                        GPIO_PIN_10 | GPIO_PIN_11 | GPIO_PIN_12 | GPIO_PIN_13 |
@@ -102,11 +105,11 @@ void sram_init(void)
     g_sram_handler.Init.ExtendedMode = FSMC_EXTENDED_MODE_DISABLE;          /* 读写使用相同的时序 */
     g_sram_handler.Init.AsynchronousWait = FSMC_ASYNCHRONOUS_WAIT_DISABLE;  /* 是否使能同步传输模式下的等待信号,此处未用到 */
     g_sram_handler.Init.WriteBurst = FSMC_WRITE_BURST_DISABLE;              /* 禁止突发写 */
-    /* FSMC读时序控制寄存器 */
-    fsmc_readwritetim.AddressSetupTime = 0x02;                              /* 地址建立时间（ADDSET）为2个HCLK 1/168M=6ns*2=12ns */
+    /* FMC读时序控制寄存器 */
+    fsmc_readwritetim.AddressSetupTime = 0x00;                              /* 地址建立时间（ADDSET）为1个HCLK 1/72M=13.8ns */
     fsmc_readwritetim.AddressHoldTime = 0x00;                               /* 地址保持时间（ADDHLD）模式A未用到 */
-    fsmc_readwritetim.DataSetupTime = 0x08;                                 /* 数据保存时间为8个HCLK =6*8= 48ns */
-    fsmc_readwritetim.BusTurnAroundDuration = 0x00;
+    fsmc_readwritetim.DataSetupTime = 0x06;                                 /* 数据保存时间为6个HCLK = 6*1 = 6ns */
+    fsmc_readwritetim.BusTurnAroundDuration = 0X00;
     fsmc_readwritetim.AccessMode = FSMC_ACCESS_MODE_A;                      /* 模式A */
     HAL_SRAM_Init(&g_sram_handler, &fsmc_readwritetim, &fsmc_readwritetim);
 }
