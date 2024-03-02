@@ -68,3 +68,14 @@
 ..\..\output\delay.o: ..\..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h
 ..\..\output\delay.o: ..\..\Drivers\CMSIS\Include\core_cm4.h
 ..\..\output\delay.o: ..\..\Drivers\./SYSTEM/delay/delay.h
+..\..\output\delay.o: ..\..\Middlewares\FreeRTOS\include\FreeRTOS.h
+..\..\output\delay.o: ..\..\User\FreeRTOSConfig.h
+..\..\output\delay.o: ..\..\Drivers\./SYSTEM/usart/usart.h
+..\..\output\delay.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\..\output\delay.o: ..\..\Middlewares\FreeRTOS\include\projdefs.h
+..\..\output\delay.o: ..\..\Middlewares\FreeRTOS\include\portable.h
+..\..\output\delay.o: ..\..\Middlewares\FreeRTOS\include\deprecated_definitions.h
+..\..\output\delay.o: ..\..\Middlewares\FreeRTOS\portable\RVDS\ARM_CM4F\portmacro.h
+..\..\output\delay.o: ..\..\Middlewares\FreeRTOS\include\mpu_wrappers.h
+..\..\output\delay.o: ..\..\Middlewares\FreeRTOS\include\task.h
+..\..\output\delay.o: ..\..\Middlewares\FreeRTOS\include\list.h
