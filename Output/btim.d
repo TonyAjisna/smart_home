@@ -1,4 +1,4 @@
-..\..\output\btim.o: ..\..\Drivers\BSP\TIMER\btim.c
+..\..\output\btim.o: ..\..\Drivers\BSP\TIMER_BASE\btim.c
 ..\..\output\btim.o: ..\..\Drivers\./BSP/LED/led.h
 ..\..\output\btim.o: ..\..\Drivers\./SYSTEM/sys/sys.h
 ..\..\output\btim.o: ..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
@@ -68,4 +68,10 @@
 ..\..\output\btim.o: ..\..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h
 ..\..\output\btim.o: ..\..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h
 ..\..\output\btim.o: ..\..\Drivers\CMSIS\Include\core_cm4.h
-..\..\output\btim.o: ..\..\Drivers\./BSP/TIMER/btim.h
+..\..\output\btim.o: ..\..\Drivers\./BSP/TIMER_BASE/btim.h
+..\..\output\btim.o: ..\..\Middlewares\./AUDIOCODEC/wav/wavplay.h
+..\..\output\btim.o: ..\..\User\./APP/audioplay.h
+..\..\output\btim.o: ..\..\Middlewares\./FATFS/source/ff.h
+..\..\output\btim.o: ..\..\Middlewares\./FATFS/source/ffconf.h
+..\..\output\btim.o: ..\..\Drivers\./BSP/LCD/lcd.h
+..\..\output\btim.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
