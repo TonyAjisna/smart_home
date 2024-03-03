@@ -68,7 +68,7 @@ uint16_t lcd_discolor[11] = {WHITE, BLACK, BLUE, RED,
 /* FreeRTOS例程入口函数 */
 void freertos_APP(void)
 {
-    lcd_show_string(10, 10, 220, 32, 32, "STM32", RED);
+    lcd_show_string(10, 10, 220, 32, 32, "SMART_HOME", RED);
     lcd_show_string(10, 47, 220, 24, 24, "FreeRTOS Porting", RED);
     lcd_show_string(10, 76, 220, 16, 16, "zhaobw@yeah.net", RED);
     
