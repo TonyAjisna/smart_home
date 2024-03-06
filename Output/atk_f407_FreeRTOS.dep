@@ -1,7 +1,7 @@
 Dependencies for Project 'atk_f407', Target 'FreeRTOS': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
 F (..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f407xx.s)(0x65E32CCB)(--cpu Cortex-M4.fp.sp -g --apcs=interwork -IC:\Users\Zhaobw\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include--pd "__UVISION_VERSION SETA 536" --pd "STM32F407xx SETA 1"--list ..\..\output\startup_stm32f407xx.lst --xref -o ..\..\output\startup_stm32f407xx.o --depend ..\..\output\startup_stm32f407xx.d)
-F (..\..\User\main.c)(0x65E480E4)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\..\User -I ..\..\Drivers -I ..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc -I ..\..\Middlewares -I ..\..\Middlewares\FreeRTOS\include -I ..\..\Middlewares\FreeRTOS\portable\RVDS\ARM_CM4F-IC:\Users\Zhaobw\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="536" -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o ..\..\output\main.o --omf_browse ..\..\output\main.crf --depend ..\..\output\main.d)
+F (..\..\User\main.c)(0x65E89DDD)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\..\User -I ..\..\Drivers -I ..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc -I ..\..\Middlewares -I ..\..\Middlewares\FreeRTOS\include -I ..\..\Middlewares\FreeRTOS\portable\RVDS\ARM_CM4F-IC:\Users\Zhaobw\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="536" -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o ..\..\output\main.o --omf_browse ..\..\output\main.crf --depend ..\..\output\main.d)
 I (..\..\Drivers\./SYSTEM/sys/sys.h)(0x65E32CCB)
 I (..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x65E32CCB)
 I (..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f407xx.h)(0x65E32CCB)
@@ -77,16 +77,6 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x60252374)
 I (..\..\Drivers\./BSP/KEY/key.h)(0x65E32CCB)
 I (..\..\Drivers\./BSP/SRAM/sram.h)(0x65E32CCB)
 I (..\..\Middlewares\./MALLOC/malloc.h)(0x65E32CCB)
-I (..\..\User\freertos_APP.h)(0x65E4613A)
-I (..\..\Middlewares\FreeRTOS\include\FreeRTOS.h)(0x65E32CCB)
-I (..\..\User\FreeRTOSConfig.h)(0x65E32CCC)
-I (..\..\Middlewares\FreeRTOS\include\projdefs.h)(0x65E32CCB)
-I (..\..\Middlewares\FreeRTOS\include\portable.h)(0x65E32CCB)
-I (..\..\Middlewares\FreeRTOS\include\deprecated_definitions.h)(0x65E32CCB)
-I (..\..\Middlewares\FreeRTOS\portable\RVDS\ARM_CM4F\portmacro.h)(0x65E32CCB)
-I (..\..\Middlewares\FreeRTOS\include\mpu_wrappers.h)(0x65E32CCB)
-I (..\..\Middlewares\FreeRTOS\include\task.h)(0x65E32CCB)
-I (..\..\Middlewares\FreeRTOS\include\list.h)(0x65E32CCB)
 I (..\..\Drivers\./BSP/RTC/rtc.h)(0x65281EA1)
 I (..\..\Drivers\./BSP/TIMER/gtim.h)(0x652C046F)
 I (..\..\Drivers\./BSP/ADC/adc.h)(0x64ACF40F)
@@ -100,6 +90,19 @@ I (..\..\Middlewares\./AUDIOCODEC/wav/wavplay.h)(0x64ACF415)
 I (..\..\Drivers\./BSP/TIMER_BASE/btim.h)(0x65DE08F1)
 I (..\..\Middlewares\./FATFS/exfuns/exfuns.h)(0x64ACF414)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x6025237C)
+I (..\..\User\freertos_APP.h)(0x65E89E7D)
+I (..\..\Middlewares\FreeRTOS\include\FreeRTOS.h)(0x65E32CCB)
+I (..\..\User\FreeRTOSConfig.h)(0x65E32CCC)
+I (..\..\Middlewares\FreeRTOS\include\projdefs.h)(0x65E32CCB)
+I (..\..\Middlewares\FreeRTOS\include\portable.h)(0x65E32CCB)
+I (..\..\Middlewares\FreeRTOS\include\deprecated_definitions.h)(0x65E32CCB)
+I (..\..\Middlewares\FreeRTOS\portable\RVDS\ARM_CM4F\portmacro.h)(0x65E32CCB)
+I (..\..\Middlewares\FreeRTOS\include\mpu_wrappers.h)(0x65E32CCB)
+I (..\..\Middlewares\FreeRTOS\include\task.h)(0x65E32CCB)
+I (..\..\Middlewares\FreeRTOS\include\list.h)(0x65E32CCB)
+I (..\..\Middlewares\FreeRTOS\include\timers.h)(0x65E32CCB)
+I (..\..\Middlewares\FreeRTOS\include\semphr.h)(0x65E32CCB)
+I (..\..\Middlewares\FreeRTOS\include\queue.h)(0x65E32CCB)
 F (..\..\User\stm32f4xx_it.c)(0x65E32CCC)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\..\User -I ..\..\Drivers -I ..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc -I ..\..\Middlewares -I ..\..\Middlewares\FreeRTOS\include -I ..\..\Middlewares\FreeRTOS\portable\RVDS\ARM_CM4F-IC:\Users\Zhaobw\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="536" -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o ..\..\output\stm32f4xx_it.o --omf_browse ..\..\output\stm32f4xx_it.crf --depend ..\..\output\stm32f4xx_it.d)
 I (..\..\User\stm32f4xx_it.h)(0x65E32CCC)
 I (..\..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x65E32CCB)
@@ -234,8 +237,8 @@ I (..\..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd.h)(0x65E32CCB)
 I (..\..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x65E32CCB)
 I (..\..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h)(0x65E32CCB)
 I (..\..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h)(0x65E32CCB)
-F (..\..\User\freertos_APP.c)(0x65E481A9)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\..\User -I ..\..\Drivers -I ..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc -I ..\..\Middlewares -I ..\..\Middlewares\FreeRTOS\include -I ..\..\Middlewares\FreeRTOS\portable\RVDS\ARM_CM4F-IC:\Users\Zhaobw\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="536" -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o ..\..\output\freertos_app.o --omf_browse ..\..\output\freertos_app.crf --depend ..\..\output\freertos_app.d)
-I (..\..\User\freertos_APP.h)(0x65E4613A)
+F (..\..\User\freertos_APP.c)(0x65E8A302)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I ..\..\User -I ..\..\Drivers -I ..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc -I ..\..\Middlewares -I ..\..\Middlewares\FreeRTOS\include -I ..\..\Middlewares\FreeRTOS\portable\RVDS\ARM_CM4F-IC:\Users\Zhaobw\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="536" -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o ..\..\output\freertos_app.o --omf_browse ..\..\output\freertos_app.crf --depend ..\..\output\freertos_app.d)
+I (..\..\User\freertos_APP.h)(0x65E89E7D)
 I (..\..\Middlewares\FreeRTOS\include\FreeRTOS.h)(0x65E32CCB)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6025237E)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
@@ -313,6 +316,9 @@ I (..\..\Middlewares\FreeRTOS\portable\RVDS\ARM_CM4F\portmacro.h)(0x65E32CCB)
 I (..\..\Middlewares\FreeRTOS\include\mpu_wrappers.h)(0x65E32CCB)
 I (..\..\Middlewares\FreeRTOS\include\task.h)(0x65E32CCB)
 I (..\..\Middlewares\FreeRTOS\include\list.h)(0x65E32CCB)
+I (..\..\Middlewares\FreeRTOS\include\timers.h)(0x65E32CCB)
+I (..\..\Middlewares\FreeRTOS\include\semphr.h)(0x65E32CCB)
+I (..\..\Middlewares\FreeRTOS\include\queue.h)(0x65E32CCB)
 I (..\..\Drivers\./BSP/LED/led.h)(0x65E32CCB)
 I (..\..\Drivers\./BSP/LCD/lcd.h)(0x65E32CCB)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x60252374)

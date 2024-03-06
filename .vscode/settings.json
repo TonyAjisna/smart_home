@@ -55,5 +55,14 @@
   "C_Cpp_Runner.useLeakSanitizer": false,
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
-  "C_Cpp_Runner.msvcSecureNoWarnings": false
+  "C_Cpp_Runner.msvcSecureNoWarnings": false,
+  "files.associations": {
+    "timers.h": "c",
+    "semphr.h": "c",
+    "sdio_sdcard.h": "c",
+    "freertos_app.h": "c",
+    "stdbool.h": "c",
+    "usart.h": "c",
+    "task.h": "c"
+  }
 }

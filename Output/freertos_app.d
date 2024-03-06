@@ -79,6 +79,9 @@
 ..\..\output\freertos_app.o: ..\..\Middlewares\FreeRTOS\include\mpu_wrappers.h
 ..\..\output\freertos_app.o: ..\..\Middlewares\FreeRTOS\include\task.h
 ..\..\output\freertos_app.o: ..\..\Middlewares\FreeRTOS\include\list.h
+..\..\output\freertos_app.o: ..\..\Middlewares\FreeRTOS\include\timers.h
+..\..\output\freertos_app.o: ..\..\Middlewares\FreeRTOS\include\semphr.h
+..\..\output\freertos_app.o: ..\..\Middlewares\FreeRTOS\include\queue.h
 ..\..\output\freertos_app.o: ..\..\Drivers\./BSP/LED/led.h
 ..\..\output\freertos_app.o: ..\..\Drivers\./BSP/LCD/lcd.h
 ..\..\output\freertos_app.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
