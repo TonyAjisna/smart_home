@@ -82,6 +82,11 @@
 ..\..\output\freertos_app.o: ..\..\Middlewares\FreeRTOS\include\timers.h
 ..\..\output\freertos_app.o: ..\..\Middlewares\FreeRTOS\include\semphr.h
 ..\..\output\freertos_app.o: ..\..\Middlewares\FreeRTOS\include\queue.h
+..\..\output\freertos_app.o: ..\..\Drivers\./BSP/LED/led.h
 ..\..\output\freertos_app.o: ..\..\Drivers\./BSP/LCD/lcd.h
 ..\..\output\freertos_app.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\..\output\freertos_app.o: ..\..\Drivers\./BSP/KEY/key.h
+..\..\output\freertos_app.o: ..\..\Drivers\./BSP/SDIO/sdio_sdcard.h
+..\..\output\freertos_app.o: ..\..\Drivers\./BSP/ADC/adc.h
+..\..\output\freertos_app.o: ..\..\Drivers\./BSP/RTC/rtc.h
+..\..\output\freertos_app.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
