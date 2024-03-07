@@ -63,6 +63,8 @@
     "freertos_app.h": "c",
     "stdbool.h": "c",
     "usart.h": "c",
-    "task.h": "c"
+    "task.h": "c",
+    "lcd.h": "c",
+    "freertos.h": "c"
   }
 }
