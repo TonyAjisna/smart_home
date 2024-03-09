@@ -828,6 +828,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\User\APP\audioplay.c</FilePath>
             </File>
+            <File>
+              <FileName>esp8266play.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\APP\esp8266play.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

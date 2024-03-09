@@ -69,3 +69,5 @@
 ..\..\output\usart.o: ..\..\Drivers\CMSIS\Include\core_cm4.h
 ..\..\output\usart.o: ..\..\Drivers\./SYSTEM/usart/usart.h
 ..\..\output\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\..\output\usart.o: ..\..\Drivers\./BSP/ATK_MW8266D/atk_mw8266d.h
+..\..\output\usart.o: ..\..\Drivers\./BSP/ATK_MW8266D/atk_mw8266d_uart.h

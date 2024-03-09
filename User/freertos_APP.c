@@ -11,6 +11,8 @@
 #include <stdbool.h>
 #include "timers.h"
 #include "semphr.h"
+#include "./APP/esp8266play.h"
+
 
 /******************************************************************************************************/
 /*FreeRTOS配置*/
@@ -23,20 +25,26 @@
 TaskHandle_t StartTask_Handler;      /* 任务句柄 */
 void start_task(void *pvParameters); /* 任务函数 */
 
-/* TASK1 任务 配置
+/* init_task 配置，该任务主要负责初始化各个外设，只运行一次 */
+#define INIT_TASK_PRIO 2            /* 任务优先级 */
+#define INIT_TASK_STK_SIZE 128      /* 任务堆栈大小 */
+TaskHandle_t InitTask_Handler;      /* 任务句柄 */
+void init_task(void *pvParameters); /* 任务函数 */
+
+/* base_task 配置
  * 包括: 任务句柄 任务优先级 堆栈大小 创建任务
  */
-#define BASE_TASK_PRIO 3            /* 任务优先级 */
+#define BASE_TASK_PRIO 2            /* 任务优先级 */
 #define BASE_TASK_STK_SIZE 128      /* 任务堆栈大小 */
 TaskHandle_t BaseTask_Handler;      /* 任务句柄 */
 void base_task(void *pvParameters); /* 任务函数 */
 
-#define TASK_10MS_PRIO 2             /* 任务优先级 */
+#define TASK_10MS_PRIO 3             /* 任务优先级 */
 #define TASK_10MS_STK_SIZE 128       /* 任务堆栈大小 */
 TaskHandle_t TASK_10MS_Task_Handler; /* 任务句柄 */
 void task_10ms(void *pvParameters);
 
-#define TASK_1000MS_PRIO 2             /* 任务优先级 */
+#define TASK_1000MS_PRIO 3             /* 任务优先级 */
 #define TASK_1000MS_STK_SIZE 128       /* 任务堆栈大小 */
 TaskHandle_t TASK_1000MS_Task_Handler; /* 任务句柄 */
 void task_1000ms(void *pvParameters);
@@ -95,6 +103,12 @@ void start_task(void *pvParameters)
                                           (UBaseType_t)pdTRUE,                           /* 单次定时器 */
                                           (void *)2,                                     /* 定时器ID */
                                           (TimerCallbackFunction_t)Timer1000msCallback); /* 定时器回调函数 */
+    xTaskCreate((TaskFunction_t)init_task,
+                (const char *)"init_task",
+                (uint16_t)INIT_TASK_STK_SIZE,
+                (void *)NULL,
+                (UBaseType_t)INIT_TASK_PRIO,
+                (TaskHandle_t *)&InitTask_Handler);
     /* 创建任务1 */
     xTaskCreate((TaskFunction_t)base_task,
                 (const char *)"base_task",
@@ -120,7 +134,13 @@ void start_task(void *pvParameters)
     taskEXIT_CRITICAL();            /* 退出临界区 */
 }
 
+/* 初始化任务，只执行一次 */
+void init_task(void *pvParameters)
+{
+    esp_run();
 
+    vTaskDelete(InitTask_Handler);
+}
 
 bool SD_Status = true;
 bool fonts_Status = true;
@@ -128,6 +148,7 @@ uint8_t tbuf[40];                           /* 当前年月日和时分秒打印句柄 */
 uint8_t hour, min, sec, ampm;               /* RTC参数 */
 uint8_t year, month, date, week;
 short temp;                                 /* 温度 */
+uint8_t is_unvarnished;
 void base_task(void *pvParameters)
 {
     uint8_t key = 0;
@@ -148,7 +169,6 @@ void base_task(void *pvParameters)
         lcd_show_num(30 + 13 * 8, 140, SD_TOTAL_SIZE_MB(&g_sdcard_handler), 5, 16, RED); /* 显示SD卡容量 */
     
     }
-
     while (1)
     {
         if ((Timer10Timer_Handler != NULL) && (Timer1000Timer_Handler != NULL))
@@ -157,29 +177,42 @@ void base_task(void *pvParameters)
 
             switch (key)
             {
-            case KEY0_PRES:
+                case KEY0_PRES:
+                {
+                    xTimerStart((TimerHandle_t)Timer10Timer_Handler,   /* 待启动的定时器句柄 */
+                                (TickType_t)portMAX_DELAY);            /* 等待系统启动定时器的最大时间 */
+                    xTimerStart((TimerHandle_t)Timer1000Timer_Handler, /* 待启动的定时器句柄 */
+                                (TickType_t)portMAX_DELAY);            /* 等待系统启动定时器的最大时间 */
+                    break;
+                }
+                case KEY1_PRES:
+                {
+                    xTimerStop((TimerHandle_t)Timer10Timer_Handler,   /* 待停止的定时器句柄 */
+                            (TickType_t)portMAX_DELAY);            /* 等待系统停止定时器的最大时间 */
+                    xTimerStop((TimerHandle_t)Timer1000Timer_Handler, /* 待停止的定时器句柄 */
+                            (TickType_t)portMAX_DELAY);            /* 等待系统停止定时器的最大时间 */
+                    break;
+                }
+                 case KEY2_PRES:
             {
-                xTimerStart((TimerHandle_t)Timer10Timer_Handler,   /* 待启动的定时器句柄 */
-                            (TickType_t)portMAX_DELAY);            /* 等待系统启动定时器的最大时间 */
-                xTimerStart((TimerHandle_t)Timer1000Timer_Handler, /* 待启动的定时器句柄 */
-                            (TickType_t)portMAX_DELAY);            /* 等待系统启动定时器的最大时间 */
+                /* 功能测试 */
+                esp_key0_fun(is_unvarnished);
                 break;
             }
-            case KEY1_PRES:
+            case WKUP_PRES:
             {
-                xTimerStop((TimerHandle_t)Timer10Timer_Handler,   /* 待停止的定时器句柄 */
-                           (TickType_t)portMAX_DELAY);            /* 等待系统停止定时器的最大时间 */
-                xTimerStop((TimerHandle_t)Timer1000Timer_Handler, /* 待停止的定时器句柄 */
-                           (TickType_t)portMAX_DELAY);            /* 等待系统停止定时器的最大时间 */
+                /* 透传模式切换 */
+                esp_key1_fun(&is_unvarnished);
                 break;
             }
-            default:
-            {
-                break;
-            }
+                default:
+                {
+                    break;
+                }
             }
         }
-
+        /* 发送透传接收自TCP Server的数据到串口调试助手 */
+        esp_upload_data(is_unvarnished);
         vTaskDelay(10);
     }
 }

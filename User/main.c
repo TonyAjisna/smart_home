@@ -20,28 +20,13 @@
 #include <stdbool.h>
 #include "freertos_APP.h"
 
+
 extern bool SD_Status;
 extern bool fonts_Status;
 
 int main(void)
 {
-
-    
-    uint16_t ledrpwmval = 0;
-    uint8_t dir = 1;  
-    uint8_t status = 0;                         /* 标�?�是否响铃状�?? */
-    uint8_t status1 = 1;                        /* 标�?�闹钟是否生�?? */
-    uint8_t status2 = 1; 
-    uint8_t key;
     uint8_t res = 0;
-    uint8_t tbuf1[40];                          /* 响铃时间打印句柄 */
-    uint8_t tbuf2[40];                          /* 倒�?�时打印句柄 */
-    uint64_t t = 0;                              /* 设置程序心跳�??10ms */
-    uint8_t t1 = 0;
-
-    uint8_t alarm[3] = {12, 19, 0};                  /* 暂时写�?�响铃时�?? */
-    uint8_t alarm1[3] = {0, 0, 0}; 
-
     HAL_Init();                                 /* 初�?�化HAL�??? */
     sys_stm32_clock_init(336, 8, 2, 7);         /* 设置时钟,168Mhz */
     delay_init(168);                            /* 延时初�?�化 */
@@ -93,9 +78,6 @@ int main(void)
     es8388_output_cfg(1, 1);    /* DAC选择通道输出 */
     es8388_hpvol_set(25);       /* 设置耳机音量  */
     es8388_spkvol_set(30);      /* 设置喇叭音量 */
-
-
-
 
 
     freertos_APP();                    /* 运�?�FreeRTOS例程 */

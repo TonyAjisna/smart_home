@@ -22,16 +22,22 @@ Dialog DLL:      TCM.DLL V1.53.0.0
  
 <h2>Project:</h2>
 C:\Users\Zhaobw\Desktop\Projects\smart_home\Projects\MDK-ARM\atk_f407.uvprojx
-Project File Date:  03/07/2024
+Project File Date:  03/10/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'FreeRTOS'
+compiling esp8266play.c...
+..\..\User\APP\esp8266play.c(140): warning:  #177-D: variable "key"  was declared but never referenced
+      uint8_t key;
+..\..\User\APP\esp8266play.c(141): warning:  #177-D: variable "is_unvarnished"  was declared but never referenced
+      uint8_t is_unvarnished = 0;
+..\..\User\APP\esp8266play.c: 2 warnings, 0 errors
 compiling freertos_APP.c...
 linking...
-Program Size: Code=69340 RO-data=187820 RW-data=288 ZI-data=1229416  
+Program Size: Code=77024 RO-data=188316 RW-data=292 ZI-data=1229412  
 FromELF: creating hex file...
-"..\..\Output\atk_f407.axf" - 0 Error(s), 0 Warning(s).
+"..\..\Output\atk_f407.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 

@@ -73,6 +73,7 @@
 "..\..\output\text.o"
 "..\..\output\wavplay.o"
 "..\..\output\audioplay.o"
+"..\..\output\esp8266play.o"
 --strict --scatter "..\..\Output\atk_f407.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

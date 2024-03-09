@@ -90,3 +90,4 @@
 ..\..\output\freertos_app.o: ..\..\Drivers\./BSP/ADC/adc.h
 ..\..\output\freertos_app.o: ..\..\Drivers\./BSP/RTC/rtc.h
 ..\..\output\freertos_app.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+..\..\output\freertos_app.o: ..\..\User\./APP/esp8266play.h
