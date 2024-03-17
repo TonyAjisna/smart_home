@@ -1,13 +1,7 @@
 {
   "C_Cpp_Runner.msvcBatchPath": "",
   "files.associations": {
-    "demo.h": "c",
-    "semphr.h": "c",
-    "rtc.h": "c",
-    "led.h": "c",
-    "atk_mw8266d.h": "c",
-    "esp8266play.h": "c",
-    "sys.h": "c"
+    "freertos.h": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

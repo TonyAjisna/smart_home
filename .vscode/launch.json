@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Zhaobw/Desktop/Projects/smart_home/User",
-      "program": "c:/Users/Zhaobw/Desktop/Projects/smart_home/User/build/Debug/outDebug",
+      "cwd": "c:/Users/Zhaobw/Desktop/Projects/smart_home/Drivers/BSP/ATK_MW579",
+      "program": "c:/Users/Zhaobw/Desktop/Projects/smart_home/Drivers/BSP/ATK_MW579/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
