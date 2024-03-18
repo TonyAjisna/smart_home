@@ -1,7 +1,21 @@
 {
   "C_Cpp_Runner.msvcBatchPath": "",
   "files.associations": {
-    "freertos.h": "c"
+    "freertos.h": "c",
+    "stdint.h": "c",
+    "malloc.h": "c",
+    "led.h": "c",
+    "mqtt.h": "c",
+    "lcd.h": "c",
+    "string.h": "c",
+    "task.h": "c",
+    "queue.h": "c",
+    "mqttplay.h": "c",
+    "hmac.h": "c",
+    "sys.h": "c",
+    "freertos_app.h": "c",
+    "usart.h": "c",
+    "sha.h": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

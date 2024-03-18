@@ -843,6 +843,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\User\APP\esp8266play.c</FilePath>
             </File>
+            <File>
+              <FileName>mqttplay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\APP\mqttplay.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1067,6 +1072,31 @@
               <FileName>ethernet.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Middlewares\lwip\src\netif\ethernet.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Middlewares/lwip/lwip_app</GroupName>
+          <Files>
+            <File>
+              <FileName>hmac_sha1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Middlewares\lwip\lwip_app\hmac_sha1.c</FilePath>
+            </File>
+            <File>
+              <FileName>sha1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Middlewares\lwip\lwip_app\sha1.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Middlewares/lwip/src/apps</GroupName>
+          <Files>
+            <File>
+              <FileName>mqtt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Middlewares\lwip\src\apps\mqtt\mqtt.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -12,7 +12,7 @@
 #include "timers.h"
 #include "semphr.h"
 #include "./APP/esp8266play.h"
-
+#include "./APP/mqttplay.h"
 
 /******************************************************************************************************/
 /*FreeRTOS配置*/
@@ -138,6 +138,7 @@ void start_task(void *pvParameters)
 void init_task(void *pvParameters)
 {
     esp_run();
+    mqtt_connect_init();
 
     vTaskDelete(InitTask_Handler);
 }
@@ -226,37 +227,48 @@ void task_10ms(void *pvParameters)
     }
 }
 
+
+void stm_sprintf(void)
+{
+    xSemaphoreTake(BinarySemaphore_1000ms, portMAX_DELAY); /* 获取二值信号量 */
+    printf("task1000msCounter: %u\n", task1000msCounter);
+
+    /* 打印RTC系统时间 */
+    rtc_get_date(&year, &month, &date, &week);  /* 打印年月日 */
+    sprintf((char *)tbuf, "TIME: 20%02d/%02d/%02d", year, month, date);
+    lcd_show_string(23, 200, 210, 16, 16, (char*)tbuf, RED);
+    lcd_show_char(150, 200, ' ', 16, 0, BLUE);  /* 中间空格 */
+    lcd_show_char(160, 200, ' ', 16, 0, BLUE);
+    lcd_show_char(155, 200, ' ', 16, 0, BLUE);
+    rtc_get_time(&hour, &min, &sec, &ampm);     /* 打印时分秒 */
+    sprintf((char *)tbuf, "%02d:%02d:%02d", hour, min, sec);
+    lcd_show_string(170, 200, 210, 16, 16, (char*)tbuf, RED);
+
+    /* 打印温度信息 */
+    temp = adc_get_temperature();   //得到温度值
+    if (temp < 0)
+    {
+        temp = -temp;
+        lcd_show_string(30 + 10 * 8, 230, 16, 16, 16, "-", RED);   /* 显示负号 */
+    }
+    else
+    {
+        lcd_show_string(30 + 10 * 8, 230, 16, 16, 16, " ", RED);   /* 无符号 */
+    }
+    lcd_show_xnum(30 + 11 * 8, 230, temp / 100, 2, 16, 0, RED);    /* 显示整数部分 */
+    lcd_show_xnum(30 + 14 * 8, 230, temp % 100, 2, 16, 0X80, RED); /* 显示小数部分 */
+}
+
+
+extern int g_publish_flag;    //发布成功标志位
+extern void mqtt_push(int g_publish_flag);                                  
 void task_1000ms(void *pvParameters)
 {
     while (1)
     {
-        xSemaphoreTake(BinarySemaphore_1000ms, portMAX_DELAY); /* 获取二值信号量 */
-        printf("task1000msCounter: %u\n", task1000msCounter);
+        stm_sprintf();
 
-        /* 打印RTC系统时间 */
-        rtc_get_date(&year, &month, &date, &week);  /* 打印年月日 */
-        sprintf((char *)tbuf, "TIME: 20%02d/%02d/%02d", year, month, date);
-        lcd_show_string(23, 200, 210, 16, 16, (char*)tbuf, RED);
-        lcd_show_char(150, 200, ' ', 16, 0, BLUE);  /* 中间空格 */
-        lcd_show_char(160, 200, ' ', 16, 0, BLUE);
-        lcd_show_char(155, 200, ' ', 16, 0, BLUE);
-        rtc_get_time(&hour, &min, &sec, &ampm);     /* 打印时分秒 */
-        sprintf((char *)tbuf, "%02d:%02d:%02d", hour, min, sec);
-        lcd_show_string(170, 200, 210, 16, 16, (char*)tbuf, RED);
-
-        /* 打印温度信息 */
-        temp = adc_get_temperature();   //得到温度值
-        if (temp < 0)
-        {
-            temp = -temp;
-            lcd_show_string(30 + 10 * 8, 230, 16, 16, 16, "-", RED);   /* 显示负号 */
-        }
-        else
-        {
-            lcd_show_string(30 + 10 * 8, 230, 16, 16, 16, " ", RED);   /* 无符号 */
-        }
-        lcd_show_xnum(30 + 11 * 8, 230, temp / 100, 2, 16, 0, RED);    /* 显示整数部分 */
-        lcd_show_xnum(30 + 14 * 8, 230, temp % 100, 2, 16, 0X80, RED); /* 显示小数部分 */
+        mqtt_push(g_publish_flag);
     }
 }
 
