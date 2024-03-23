@@ -1,26 +1,91 @@
-#include "./SYSTEM/sys/sys.h"
-#include "./SYSTEM/usart/usart.h"
-#include "./SYSTEM/delay/delay.h"
-#include "./BSP/LED/led.h"
-#include "./BSP/LCD/lcd.h"
-#include "./BSP/KEY/key.h"
-#include "./BSP/SRAM/sram.h"
-#include "./MALLOC/malloc.h"
-#include "freertos_demo.h"
+//=============================================================================
+//ÎÄ¼þÃû³Æ£ºmain.h
+//¹¦ÄÜ¸ÅÒª£ºSTM32F103C8ºËÐÄ¼ì²â
+//°æÈ¨ËùÓÐ£ºÔ´µØ¹¤×÷ÊÒwww.vcc-gnd.com
+//°æÈ¨¸üÐÂ£º2013-02-20
+//µ÷ÊÔ·½Ê½£ºJ-Link OB ARM SW·½Ê½ 5MHz
+//=============================================================================
 
+//Í·ÎÄ¼þ
+#include "stm32f10x.h"
+#include "GPIOLIKE51.h"
+#include "./bsp_moto.h"
+
+//º¯ÊýÉùÃ÷
+void GPIO_Configuration(void);
+
+//=============================================================================
+//ÎÄ¼þÃû³Æ£ºDelay
+//¹¦ÄÜ¸ÅÒª£ºÑÓÊ±
+//²ÎÊýËµÃ÷£ºnCount£ºÑÓÊ±³¤¶Ì
+//º¯Êý·µ»Ø£ºÎÞ
+//=============================================================================
+
+void Delay(uint32_t nCount)
+{
+  for(; nCount != 0; nCount--);
+}
+
+// ÑÓ³ÙtimeºÁÃë
+void Delay_ms(uint16_t time)
+{  
+    u16 i=0;
+    while(time--)
+    {
+        i=10000;        //×Ô¼º¶¨Òå
+        while(i--) ;  
+    }
+}
+
+//=============================================================================
+//ÎÄ¼þÃû³Æ£ºmain
+//¹¦ÄÜ¸ÅÒª£ºÖ÷º¯Êý
+//²ÎÊýËµÃ÷£ºÎÞ
+//º¯Êý·µ»Ø£ºint
+//=============================================================================
 int main(void)
 {
-    HAL_Init();                         /* åˆå§‹åŒ–HALåº“ */
-    sys_stm32_clock_init(336, 8, 2, 7); /* è®¾ç½®æ—¶é’Ÿ,168Mhz */
-    delay_init(168);                    /* å»¶æ—¶åˆå§‹åŒ– */
-    usart_init(115200);                 /* ä¸²å£åˆå§‹åŒ–ä¸º115200 */
-    led_init();                         /* åˆå§‹åŒ–LED */
-    lcd_init();                         /* åˆå§‹åŒ–LCD */
-    key_init();                         /* åˆå§‹åŒ–æŒ‰é”® */
-    sram_init();                        /* SRAMåˆå§‹åŒ– */
-    my_mem_init(SRAMIN);                /* åˆå§‹åŒ–å†…éƒ¨SRAMå†…å­˜æ±  */
-    my_mem_init(SRAMEX);                /* åˆå§‹åŒ–å¤–éƒ¨SRAMå†…å­˜æ±  */
-    my_mem_init(SRAMCCM);               /* åˆå§‹åŒ–å†…éƒ¨CCMå†…å­˜æ±  */
-    
-    freertos_demo();                    /* è¿è¡ŒFreeRTOSä¾‹ç¨‹ */
+	  // GPIO_Configuration();
+    GPIO_Moto_Init();
+    while(1)
+    {
+        // Moto1Õý×ª2Ãë
+        Moto1_Forward();
+        Delay_ms(2000);
+         
+        // Moto1Í£Ö¹2Ãë
+        Moto1_Pause();
+        Delay_ms(2000);
+                 
+        // Moto1·´×ª2Ãë
+        Moto1_Reverse();
+        Delay_ms(2000);
+         
+        // Moto1Í£Ö¹2Ãë
+        Moto1_Pause();
+        Delay_ms(2000);
+    }
 }
+
+//=============================================================================
+//ÎÄ¼þÃû³Æ£ºGPIO_Configuration
+//¹¦ÄÜ¸ÅÒª£ºGPIO³õÊ¼»¯
+//²ÎÊýËµÃ÷£ºÎÞ
+//º¯Êý·µ»Ø£ºÎÞ
+//=============================================================================
+void GPIO_Configuration(void)
+{
+  GPIO_InitTypeDef GPIO_InitStructure;
+  
+  RCC_APB2PeriphClockCmd( RCC_APB2Periph_GPIOC , ENABLE); 						 
+//=============================================================================
+//LED -> PC13
+//=============================================================================			 
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 
+  GPIO_Init(GPIOC, &GPIO_InitStructure);
+}
+
+
+
