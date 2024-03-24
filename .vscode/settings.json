@@ -59,6 +59,8 @@
   "files.associations": {
     "sys.h": "c",
     "atk_mw579_uart.h": "c",
-    "stm32f1xx.h": "c"
+    "stm32f1xx.h": "c",
+    "stdint.h": "c",
+    "bt04_e.h": "c"
   }
 }
