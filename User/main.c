@@ -1,91 +1,62 @@
-//=============================================================================
-//文件名称：main.h
-//功能概要：STM32F103C8核心检测
-//版权所有：源地工作室www.vcc-gnd.com
-//版权更新：2013-02-20
-//调试方式：J-Link OB ARM SW方式 5MHz
-//=============================================================================
+/**
+ ****************************************************************************************************
+ * @file        main.c
+ * @author      正点原子团队(ALIENTEK)
+ * @version     V1.0
+ * @date        2022-06-21
+ * @brief       ATK-MW579模块iBeacon模式测试实验
+ * @license     Copyright (c) 2020-2032, 广州市星翼电子科技有限公司
+ ****************************************************************************************************
+ * @attention
+ *
+ * 实验平台:正点原子 MiniSTM32 V4开发板
+ * 在线视频:www.yuanzige.com
+ * 技术论坛:www.openedv.com
+ * 公司网址:www.alientek.com
+ * 购买地址:openedv.taobao.com
+ *
+ ****************************************************************************************************
+ */
 
-//头文件
-#include "stm32f10x.h"
-#include "GPIOLIKE51.h"
-#include "./bsp_moto.h"
+#include "./SYSTEM/sys/sys.h"
+#include "./SYSTEM/delay/delay.h"
+#include "./SYSTEM/usart/usart.h"
+#include "./BSP/LED/led.h"
+#include "./BSP/KEY/key.h"
+#include "./BSP/LCD/lcd.h"
+#include "demo.h"
 
-//函数声明
-void GPIO_Configuration(void);
-
-//=============================================================================
-//文件名称：Delay
-//功能概要：延时
-//参数说明：nCount：延时长短
-//函数返回：无
-//=============================================================================
-
-void Delay(uint32_t nCount)
+/**
+ * @brief       显示实验信息
+ * @param       无
+ * @retval      无
+ */
+void show_mesg(void)
 {
-  for(; nCount != 0; nCount--);
+    /* LCD显示实验信息 */
+    lcd_show_string(10, 10, 220, 32, 32, "STM32", RED);
+    lcd_show_string(10, 47, 220, 24, 24, "ATK-MW579", RED);
+    lcd_show_string(10, 76, 220, 16, 16, "ATOM@ALIENTEK", RED);
+    
+    /* 串口输出实验信息 */
+    printf("\n");
+    printf("********************************\r\n");
+    printf("STM32\r\n");
+    printf("ATK-MW579\r\n");
+    printf("ATOM@ALIENTEK\r\n");
+    printf("********************************\r\n");
+    printf("\r\n");
 }
 
-// 延迟time毫秒
-void Delay_ms(uint16_t time)
-{  
-    u16 i=0;
-    while(time--)
-    {
-        i=10000;        //自己定义
-        while(i--) ;  
-    }
-}
-
-//=============================================================================
-//文件名称：main
-//功能概要：主函数
-//参数说明：无
-//函数返回：int
-//=============================================================================
 int main(void)
 {
-	  // GPIO_Configuration();
-    GPIO_Moto_Init();
-    while(1)
-    {
-        // Moto1正转2秒
-        Moto1_Forward();
-        Delay_ms(2000);
-         
-        // Moto1停止2秒
-        Moto1_Pause();
-        Delay_ms(2000);
-                 
-        // Moto1反转2秒
-        Moto1_Reverse();
-        Delay_ms(2000);
-         
-        // Moto1停止2秒
-        Moto1_Pause();
-        Delay_ms(2000);
-    }
+    HAL_Init();                         /* 初始化HAL库 */
+    sys_stm32_clock_init(RCC_PLL_MUL9); /* 设置时钟, 72Mhz */
+    delay_init(72);                     /* 延时初始化 */
+    usart_init(115200);                 /* 串口初始化为115200 */
+    led_init();                         /* 初始化LED */
+    key_init();                         /* 初始化按键 */
+    lcd_init();                         /* 初始化LCD */
+    show_mesg();                        /* 显示实验信息 */
+    demo_run();                         /* 运行示例程序 */
 }
-
-//=============================================================================
-//文件名称：GPIO_Configuration
-//功能概要：GPIO初始化
-//参数说明：无
-//函数返回：无
-//=============================================================================
-void GPIO_Configuration(void)
-{
-  GPIO_InitTypeDef GPIO_InitStructure;
-  
-  RCC_APB2PeriphClockCmd( RCC_APB2Periph_GPIOC , ENABLE); 						 
-//=============================================================================
-//LED -> PC13
-//=============================================================================			 
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 
-  GPIO_Init(GPIOC, &GPIO_InitStructure);
-}
-
-
-

@@ -1,15 +1,15 @@
 #ifndef __BSP_MOTO_H__
 #define __BSP_MOTO_H__
  
-#include "stm32f10x.h"
+#include "stm32f1xx.h"
  
 #define HIGH                        1
 #define LOW                         0
  
 #define GPIO_MOTO_CLK               RCC_APB2Periph_GPIOA
 #define GPIO_MOTO_PORT              GPIOA
-#define GPIO_MOTO_Pin_IN1           GPIO_Pin_2
-#define GPIO_MOTO_Pin_IN2           GPIO_Pin_3
+#define GPIO_MOTO_Pin_IN1           GPIO_PIN_2
+#define GPIO_MOTO_Pin_IN2           GPIO_PIN_3
  
 #define IN1(a)\
     if(a)   GPIO_SetBits(GPIO_MOTO_PORT, GPIO_MOTO_Pin_IN1);\
