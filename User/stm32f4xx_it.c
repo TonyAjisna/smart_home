@@ -23,7 +23,6 @@
 #include "stm32f4xx_it.h"
 #include "stm32f4xx_hal.h"
 #include "./SYSTEM/sys/sys.h"
-
 /** @addtogroup STM32F4xx_HAL_Examples
   * @{
   */
@@ -105,17 +104,16 @@ void UsageFault_Handler(void)
   }
 }
 
+#if !SYS_SUPPORT_OS /* 使用OS */
 /**
   * @brief  This function handles SVCall exception.
   * @param  None
   * @retval None
   */
-#if (!SYS_SUPPORT_OS)
 void SVC_Handler(void)
 {
 }
 #endif
-
 /**
   * @brief  This function handles Debug Monitor exception.
   * @param  None
@@ -125,23 +123,21 @@ void DebugMon_Handler(void)
 {
 }
 
+#if !SYS_SUPPORT_OS /* 使用OS */
 /**
   * @brief  This function handles PendSVC exception.
   * @param  None
   * @retval None
   */
-#if (!SYS_SUPPORT_OS)
 void PendSV_Handler(void)
 {
 }
-#endif
 
 /**
   * @brief  This function handles SysTick Handler.
   * @param  None
   * @retval None
   */
-#if (!SYS_SUPPORT_OS)
 void SysTick_Handler(void)
 {
   HAL_IncTick();

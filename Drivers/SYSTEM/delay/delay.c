@@ -1,13 +1,37 @@
+/**
+ ****************************************************************************************************
+ * @file        delay.c
+ * @author      正点原子团队(ALIENTEK)
+ * @version     V1.0
+ * @date        2021-10-14
+ * @brief       使用SysTick的普通计数模式对延迟进行管理(支持ucosii)
+ *              提供delay_init初始化函数， delay_us和delay_ms等延时函数
+ * @license     Copyright (c) 2020-2032, 广州市星翼电子科技有限公司
+ ****************************************************************************************************
+ * @attention
+ *
+ * 实验平台:正点原子 STM32F407开发板
+ * 在线视频:www.yuanzige.com
+ * 技术论坛:www.openedv.com
+ * 公司网址:www.alientek.com
+ * 购买地址:openedv.taobao.com
+ *
+ * 修改说明
+ * V1.0 20211014
+ * 第一次发布
+ *
+ ****************************************************************************************************
+ */
+
 #include "./SYSTEM/sys/sys.h"
 #include "./SYSTEM/delay/delay.h"
-
 
 static uint32_t g_fac_us = 0;       /* us延时倍乘数 */
 
 /* 如果SYS_SUPPORT_OS定义了,说明要支持OS了(不限于UCOS) */
 #if SYS_SUPPORT_OS
 
-/* 添加公共头文件 (FreeRTOS 需要用到) */
+/* 添加公共头文件 (ucos需要用到) */
 #include "FreeRTOS.h"
 #include "task.h"
 
@@ -15,13 +39,13 @@ extern void xPortSysTickHandler(void);
 
 /**
  * @brief     systick中断服务函数,使用OS时用到
- * @param     ticks : 延时的节拍数  
+ * @param     ticks: 延时的节拍数
  * @retval    无
  */  
 void SysTick_Handler(void)
 {
     HAL_IncTick();
-    if (xTaskGetSchedulerState() != taskSCHEDULER_NOT_STARTED)  //OS开始跑了才执行正常的调度处理
+    if (xTaskGetSchedulerState() != taskSCHEDULER_NOT_STARTED) /* OS开始跑了,才执行正常的调度处理 */
     {
         xPortSysTickHandler();
     }
@@ -30,7 +54,7 @@ void SysTick_Handler(void)
 
 /**
  * @brief     初始化延迟函数
- * @param     sysclk: 系统时钟频率, 即CPU频率(rcc_c_ck), 168MHz
+ * @param     sysclk: 系统时钟频率, 即CPU频率(rcc_c_ck), 168Mhz
  * @retval    无
  */  
 void delay_init(uint16_t sysclk)
@@ -49,16 +73,15 @@ void delay_init(uint16_t sysclk)
     SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;           /* 开启SYSTICK */
 #endif 
 }
-
+ 
 #if SYS_SUPPORT_OS                                      /* 如果需要支持OS, 用以下代码 */
 
 /**
  * @brief     延时nus
- * @note      无论是否使用OS, 都是用时钟摘取法来做us延时
  * @param     nus: 要延时的us数
- * @note      nus取值范围: 0 ~ (2^32 / fac_us) (fac_us一般等于系统主频, 自行套入计算)
+ * @note      nus取值范围: 0~8947848(最大值即2^32 / g_fac_us @g_fac_us = 168)
  * @retval    无
- */
+ */ 
 void delay_us(uint32_t nus)
 {
     uint32_t ticks;
@@ -87,11 +110,11 @@ void delay_us(uint32_t nus)
             }
         }
     }
-}
+} 
 
 /**
  * @brief     延时nms
- * @param     nms: 要延时的ms数 (0< nms <= (2^32 / fac_us / 1000))(fac_us一般等于系统主频, 自行套入计算)
+ * @param     nms: 要延时的ms数 (0< nms <= 65535) 
  * @retval    无
  */
 void delay_ms(uint16_t nms)
@@ -104,7 +127,7 @@ void delay_ms(uint16_t nms)
     }
 }
 
-#else //不适用OS时，用以下代码
+#else  /* 不使用OS时, 用以下代码 */
 
 /**
  * @brief       延时nus
@@ -174,7 +197,6 @@ void HAL_Delay(uint32_t Delay)
      delay_ms(Delay);
 }
 #endif
-
 
 
 

@@ -1,4 +1,4 @@
-..\..\output\netifapi.o: ..\..\Middlewares\lwip\src\api\netifapi.c
+..\..\output\netifapi.o: ..\..\Middlewares\LWIP\src\api\netifapi.c
 ..\..\output\netifapi.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\netifapi.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\netifapi.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

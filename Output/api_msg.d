@@ -1,4 +1,4 @@
-..\..\output\api_msg.o: ..\..\Middlewares\lwip\src\api\api_msg.c
+..\..\output\api_msg.o: ..\..\Middlewares\LWIP\src\api\api_msg.c
 ..\..\output\api_msg.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\api_msg.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\api_msg.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

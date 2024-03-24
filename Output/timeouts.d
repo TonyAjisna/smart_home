@@ -1,4 +1,4 @@
-..\..\output\timeouts.o: ..\..\Middlewares\lwip\src\core\timeouts.c
+..\..\output\timeouts.o: ..\..\Middlewares\LWIP\src\core\timeouts.c
 ..\..\output\timeouts.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\timeouts.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\timeouts.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

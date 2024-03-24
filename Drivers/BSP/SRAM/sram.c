@@ -24,7 +24,6 @@
 
 #include "./BSP/SRAM/sram.h"
 #include "./SYSTEM/usart/usart.h"
-#include "./XMRAM/XMRAM.h"
 
 
 SRAM_HandleTypeDef g_sram_handler; /* SRAM句柄 */
@@ -39,7 +38,6 @@ void sram_init(void)
     GPIO_InitTypeDef gpio_init_struct;
     FSMC_NORSRAM_TimingTypeDef fsmc_readwritetim;
 
-    XmRamInit();
     SRAM_CS_GPIO_CLK_ENABLE();    /* SRAM_CS脚时钟使能 */
     SRAM_WR_GPIO_CLK_ENABLE();    /* SRAM_WR脚时钟使能 */
     SRAM_RD_GPIO_CLK_ENABLE();    /* SRAM_RD脚时钟使能 */
@@ -62,7 +60,6 @@ void sram_init(void)
     gpio_init_struct.Pin = SRAM_RD_GPIO_PIN;
     HAL_GPIO_Init(SRAM_RD_GPIO_PORT, &gpio_init_struct); /* SRAM_CS引脚模式设置 */
 
-    
     /* PD0,1,4,5,8~15 */
     gpio_init_struct.Pin = GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_8 | GPIO_PIN_9 | 
                        GPIO_PIN_10 | GPIO_PIN_11 | GPIO_PIN_12 | GPIO_PIN_13 |
@@ -109,7 +106,7 @@ void sram_init(void)
     fsmc_readwritetim.AddressSetupTime = 0x00;                              /* 地址建立时间（ADDSET）为1个HCLK 1/72M=13.8ns */
     fsmc_readwritetim.AddressHoldTime = 0x00;                               /* 地址保持时间（ADDHLD）模式A未用到 */
     fsmc_readwritetim.DataSetupTime = 0x06;                                 /* 数据保存时间为6个HCLK = 6*1 = 6ns */
-    fsmc_readwritetim.BusTurnAroundDuration = 0X00;
+    fsmc_readwritetim.BusTurnAroundDuration = 0x00;
     fsmc_readwritetim.AccessMode = FSMC_ACCESS_MODE_A;                      /* 模式A */
     HAL_SRAM_Init(&g_sram_handler, &fsmc_readwritetim, &fsmc_readwritetim);
 }

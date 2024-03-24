@@ -1,4 +1,4 @@
-..\..\output\udp.o: ..\..\Middlewares\lwip\src\core\udp.c
+..\..\output\udp.o: ..\..\Middlewares\LWIP\src\core\udp.c
 ..\..\output\udp.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\udp.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\udp.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

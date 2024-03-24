@@ -1,4 +1,4 @@
-..\..\output\api_lib.o: ..\..\Middlewares\lwip\src\api\api_lib.c
+..\..\output\api_lib.o: ..\..\Middlewares\LWIP\src\api\api_lib.c
 ..\..\output\api_lib.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\api_lib.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\api_lib.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

@@ -1,4 +1,4 @@
-..\..\output\icmp.o: ..\..\Middlewares\lwip\src\core\ipv4\icmp.c
+..\..\output\icmp.o: ..\..\Middlewares\LWIP\src\core\ipv4\icmp.c
 ..\..\output\icmp.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\icmp.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\icmp.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

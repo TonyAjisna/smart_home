@@ -1,4 +1,4 @@
-..\..\output\def.o: ..\..\Middlewares\lwip\src\core\def.c
+..\..\output\def.o: ..\..\Middlewares\LWIP\src\core\def.c
 ..\..\output\def.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\def.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\def.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

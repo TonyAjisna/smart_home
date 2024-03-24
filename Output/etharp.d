@@ -1,4 +1,4 @@
-..\..\output\etharp.o: ..\..\Middlewares\lwip\src\core\ipv4\etharp.c
+..\..\output\etharp.o: ..\..\Middlewares\LWIP\src\core\ipv4\etharp.c
 ..\..\output\etharp.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\etharp.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\etharp.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

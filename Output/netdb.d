@@ -1,4 +1,4 @@
-..\..\output\netdb.o: ..\..\Middlewares\lwip\src\api\netdb.c
+..\..\output\netdb.o: ..\..\Middlewares\LWIP\src\api\netdb.c
 ..\..\output\netdb.o: ..\..\Middlewares\lwip\src\include\lwip/netdb.h
 ..\..\output\netdb.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\netdb.o: ..\..\Middlewares\lwip\arch\lwipopts.h

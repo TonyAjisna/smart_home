@@ -1,4 +1,4 @@
-..\..\output\sys_arch.o: ..\..\Middlewares\lwip\arch\sys_arch.c
+..\..\output\sys_arch.o: ..\..\Middlewares\LWIP\arch\sys_arch.c
 ..\..\output\sys_arch.o: ..\..\Middlewares\lwip\src\include\lwip/debug.h
 ..\..\output\sys_arch.o: ..\..\Middlewares\lwip\src\include\lwip/arch.h
 ..\..\output\sys_arch.o: ..\..\Middlewares\lwip\arch/cc.h

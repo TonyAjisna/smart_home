@@ -1,5 +1,5 @@
-..\..\output\lwip_comm.o: ..\..\Middlewares\lwip\arch\lwip_comm.c
-..\..\output\lwip_comm.o: ..\..\Middlewares\lwip\arch\lwip_comm.h
+..\..\output\lwip_comm.o: ..\..\Middlewares\LWIP\arch\lwip_comm.c
+..\..\output\lwip_comm.o: ..\..\Middlewares\LWIP\arch\lwip_comm.h
 ..\..\output\lwip_comm.o: ..\..\Drivers\./BSP/ETHERNET/ethernet.h
 ..\..\output\lwip_comm.o: ..\..\Drivers\./SYSTEM/sys/sys.h
 ..\..\output\lwip_comm.o: ..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
@@ -125,7 +125,7 @@
 ..\..\output\lwip_comm.o: ..\..\Middlewares\lwip\src\include\lwip/prot/ip.h
 ..\..\output\lwip_comm.o: ..\..\Middlewares\lwip\src\include\lwip/prot/udp.h
 ..\..\output\lwip_comm.o: ..\..\Middlewares\lwip\src\include\lwip/init.h
-..\..\output\lwip_comm.o: ..\..\Middlewares\lwip\arch\ethernetif.h
+..\..\output\lwip_comm.o: ..\..\Middlewares\LWIP\arch\ethernetif.h
 ..\..\output\lwip_comm.o: ..\..\Middlewares\lwip\src\include\lwip/timeouts.h
 ..\..\output\lwip_comm.o: ..\..\Middlewares\lwip\src\include\lwip/sys.h
 ..\..\output\lwip_comm.o: ..\..\Middlewares\lwip\arch/sys_arch.h

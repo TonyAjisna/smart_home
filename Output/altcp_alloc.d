@@ -1,4 +1,4 @@
-..\..\output\altcp_alloc.o: ..\..\Middlewares\lwip\src\core\altcp_alloc.c
+..\..\output\altcp_alloc.o: ..\..\Middlewares\LWIP\src\core\altcp_alloc.c
 ..\..\output\altcp_alloc.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\altcp_alloc.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\altcp_alloc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

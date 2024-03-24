@@ -26,7 +26,7 @@
 #define __ETHERNET_H
 #include "./SYSTEM/sys/sys.h"
 #include "stm32f4xx_hal_conf.h"
-#include "stm32f4xx_hal_eth.h"
+
 
 /******************************************************************************************/
 /* Òý½Å ¶¨Òå */

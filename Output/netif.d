@@ -1,4 +1,4 @@
-..\..\output\netif.o: ..\..\Middlewares\lwip\src\core\netif.c
+..\..\output\netif.o: ..\..\Middlewares\LWIP\src\core\netif.c
 ..\..\output\netif.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\netif.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\netif.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

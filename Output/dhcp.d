@@ -1,4 +1,4 @@
-..\..\output\dhcp.o: ..\..\Middlewares\lwip\src\core\ipv4\dhcp.c
+..\..\output\dhcp.o: ..\..\Middlewares\LWIP\src\core\ipv4\dhcp.c
 ..\..\output\dhcp.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\dhcp.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\dhcp.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

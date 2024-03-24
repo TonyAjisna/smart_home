@@ -165,7 +165,7 @@ low_level_output(struct netif *netif, struct pbuf *p)
     for (q = p;q != NULL;q = q->next)
     {
         /*判断此发送描述符是否有效，即判断此发送描述符是否归以太网DMA所有*/
-        if ((DmaTxDesc->Status & ETH_DMATXDESC_OWN)!=(uint32_t)RESET)
+        if ((DmaTxDesc->Status&ETH_DMATXDESC_OWN)!=(uint32_t)RESET)
         {
             errval=ERR_USE;
             goto error;             /*发送描述符无效，不可用*/
@@ -176,12 +176,12 @@ low_level_output(struct netif *netif, struct pbuf *p)
         
         /*将pbuf中要发送的数据写入到以太网发送描述符中，有时候我们要发送的数据可能大于一个以太网
         *描述符的Tx Buffer，因此我们需要分多次将数据拷贝到多个发送描述符中*/
-        while ((byteslefttocopy + bufferoffset) > ETH_TX_BUF_SIZE )
+        while ((byteslefttocopy+bufferoffset) > ETH_TX_BUF_SIZE )
         {
             /*将数据拷贝到以太网发送描述符的Tx Buffer中*/
             memcpy((uint8_t*)((uint8_t*)buffer + bufferoffset),(uint8_t*)((uint8_t*)q->payload+payloadoffset),(ETH_TX_BUF_SIZE-bufferoffset));
             /*DmaTxDsc指向下一个发送描述符*/
-            DmaTxDesc = (ETH_DMADescTypeDef *)(DmaTxDesc->Buffer2NextDescAddr);
+            DmaTxDesc=(ETH_DMADescTypeDef *)(DmaTxDesc->Buffer2NextDescAddr);
             /*检查新的发送描述符是否有效*/
             if ((DmaTxDesc->Status & ETH_DMATXDESC_OWN) != (uint32_t)RESET)
             {
@@ -242,7 +242,7 @@ low_level_input(struct netif *netif)
     uint32_t byteslefttocopy = 0;
     uint32_t i = 0;
   
-    if (HAL_ETH_GetReceivedFrame(&g_eth_handler) != HAL_OK)  /*判断是否接收到数据*/
+    if (HAL_ETH_GetReceivedFrame(&g_eth_handler)!=HAL_OK)  /*判断是否接收到数据*/
     return NULL;
     
     len = g_eth_handler.RxFrameInfos.length;                /*获取接收到的以太网帧长度*/

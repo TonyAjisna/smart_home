@@ -1,4 +1,4 @@
-..\..\output\err.o: ..\..\Middlewares\lwip\src\api\err.c
+..\..\output\err.o: ..\..\Middlewares\LWIP\src\api\err.c
 ..\..\output\err.o: ..\..\Middlewares\lwip\src\include\lwip/err.h
 ..\..\output\err.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\err.o: ..\..\Middlewares\lwip\arch\lwipopts.h

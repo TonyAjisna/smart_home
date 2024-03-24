@@ -1,4 +1,4 @@
-..\..\output\ip4_frag.o: ..\..\Middlewares\lwip\src\core\ipv4\ip4_frag.c
+..\..\output\ip4_frag.o: ..\..\Middlewares\LWIP\src\core\ipv4\ip4_frag.c
 ..\..\output\ip4_frag.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\ip4_frag.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\ip4_frag.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

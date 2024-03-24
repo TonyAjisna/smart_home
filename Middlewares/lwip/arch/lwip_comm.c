@@ -114,7 +114,7 @@ uint8_t lwip_comm_init(void)
     ip_addr_t netmask;                          /* 子网掩码 */
     ip_addr_t gw;                               /* 默认网关 */
     
-    tcpip_init(NULL, NULL);                     /* 创建邮箱以及tcpip线程，该线程专门处理数据消息并将它往上层递交 */
+    tcpip_init(NULL, NULL);
     
     if (ethernet_mem_malloc())return 1;         /* 内存申请失败*/
 

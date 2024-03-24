@@ -1,4 +1,4 @@
-..\..\output\stats.o: ..\..\Middlewares\lwip\src\core\stats.c
+..\..\output\stats.o: ..\..\Middlewares\LWIP\src\core\stats.c
 ..\..\output\stats.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\stats.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\stats.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

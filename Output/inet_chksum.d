@@ -1,4 +1,4 @@
-..\..\output\inet_chksum.o: ..\..\Middlewares\lwip\src\core\inet_chksum.c
+..\..\output\inet_chksum.o: ..\..\Middlewares\LWIP\src\core\inet_chksum.c
 ..\..\output\inet_chksum.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\inet_chksum.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\inet_chksum.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

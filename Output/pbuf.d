@@ -1,4 +1,4 @@
-..\..\output\pbuf.o: ..\..\Middlewares\lwip\src\core\pbuf.c
+..\..\output\pbuf.o: ..\..\Middlewares\LWIP\src\core\pbuf.c
 ..\..\output\pbuf.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\pbuf.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\pbuf.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

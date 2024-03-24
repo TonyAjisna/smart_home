@@ -1,4 +1,4 @@
-..\..\output\if_api.o: ..\..\Middlewares\lwip\src\api\if_api.c
+..\..\output\if_api.o: ..\..\Middlewares\LWIP\src\api\if_api.c
 ..\..\output\if_api.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\if_api.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\if_api.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

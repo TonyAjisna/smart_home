@@ -1,4 +1,4 @@
-..\..\output\tcp.o: ..\..\Middlewares\lwip\src\core\tcp.c
+..\..\output\tcp.o: ..\..\Middlewares\LWIP\src\core\tcp.c
 ..\..\output\tcp.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\tcp.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\tcp.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

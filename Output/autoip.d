@@ -1,4 +1,4 @@
-..\..\output\autoip.o: ..\..\Middlewares\lwip\src\core\ipv4\autoip.c
+..\..\output\autoip.o: ..\..\Middlewares\LWIP\src\core\ipv4\autoip.c
 ..\..\output\autoip.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\autoip.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\autoip.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

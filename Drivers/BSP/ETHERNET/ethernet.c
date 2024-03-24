@@ -197,7 +197,7 @@ uint8_t ethernet_chip_get_speed(void)
 {
     uint8_t speed;
     #if(PHY_TYPE == LAN8720) 
-    speed = ~((ethernet_read_phy(PHY_SR) & PHY_SPEED_STATUS));     /* 从LAN8720的31号寄存器中读取网络速度和双工模式 */
+    speed = ~((ethernet_read_phy(PHY_SR) & PHY_SPEED_STATUS));         /* 从LAN8720的31号寄存器中读取网络速度和双工模式 */
     #elif(PHY_TYPE == SR8201F)
     speed = ((ethernet_read_phy(PHY_SR) & PHY_SPEED_STATUS) >> 13);    /* 从SR8201F的0号寄存器中读取网络速度和双工模式 */
     #elif(PHY_TYPE == YT8512C)

@@ -85,5 +85,3 @@
 ..\..\output\sram.o: ..\..\Drivers\CMSIS\Include\core_cm4.h
 ..\..\output\sram.o: ..\..\Drivers\./SYSTEM/usart/usart.h
 ..\..\output\sram.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-..\..\output\sram.o: ..\..\Middlewares\./XMRAM/XMRAM.h
-..\..\output\sram.o: ..\..\Drivers\./SYSTEM/delay/delay.h

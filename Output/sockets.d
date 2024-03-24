@@ -1,4 +1,4 @@
-..\..\output\sockets.o: ..\..\Middlewares\lwip\src\api\sockets.c
+..\..\output\sockets.o: ..\..\Middlewares\LWIP\src\api\sockets.c
 ..\..\output\sockets.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\sockets.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\sockets.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

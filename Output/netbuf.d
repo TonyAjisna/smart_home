@@ -1,4 +1,4 @@
-..\..\output\netbuf.o: ..\..\Middlewares\lwip\src\api\netbuf.c
+..\..\output\netbuf.o: ..\..\Middlewares\LWIP\src\api\netbuf.c
 ..\..\output\netbuf.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\netbuf.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\netbuf.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

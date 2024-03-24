@@ -1,4 +1,4 @@
-..\..\output\ip4.o: ..\..\Middlewares\lwip\src\core\ipv4\ip4.c
+..\..\output\ip4.o: ..\..\Middlewares\LWIP\src\core\ipv4\ip4.c
 ..\..\output\ip4.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\ip4.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\ip4.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

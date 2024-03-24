@@ -1,4 +1,4 @@
-..\..\output\ethernet_1.o: ..\..\Middlewares\lwip\src\netif\ethernet.c
+..\..\output\ethernet_1.o: ..\..\Middlewares\LWIP\src\netif\ethernet.c
 ..\..\output\ethernet_1.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\ethernet_1.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\ethernet_1.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

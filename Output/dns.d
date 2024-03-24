@@ -1,4 +1,4 @@
-..\..\output\dns.o: ..\..\Middlewares\lwip\src\core\dns.c
+..\..\output\dns.o: ..\..\Middlewares\LWIP\src\core\dns.c
 ..\..\output\dns.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\dns.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\dns.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

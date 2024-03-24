@@ -1,4 +1,4 @@
-..\..\output\ethernetif.o: ..\..\Middlewares\lwip\arch\ethernetif.c
+..\..\output\ethernetif.o: ..\..\Middlewares\LWIP\arch\ethernetif.c
 ..\..\output\ethernetif.o: ..\..\Middlewares\lwip\src\include\lwip/opt.h
 ..\..\output\ethernetif.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\ethernetif.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
@@ -134,7 +134,7 @@
 ..\..\output\ethernetif.o: ..\..\Middlewares\FreeRTOS\include\list.h
 ..\..\output\ethernetif.o: ..\..\Middlewares\lwip\src\include\lwip/sys.h
 ..\..\output\ethernetif.o: ..\..\Middlewares\lwip\arch/sys_arch.h
-..\..\output\ethernetif.o: ..\..\Middlewares\lwip\arch\ethernetif.h
-..\..\output\ethernetif.o: ..\..\Middlewares\lwip\arch\lwip_comm.h
+..\..\output\ethernetif.o: ..\..\Middlewares\LWIP\arch\ethernetif.h
+..\..\output\ethernetif.o: ..\..\Middlewares\LWIP\arch\lwip_comm.h
 ..\..\output\ethernetif.o: ..\..\Drivers\./BSP/ETHERNET/ethernet.h
 ..\..\output\ethernetif.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
