@@ -107,3 +107,4 @@
 ..\..\output\freertos_app.o: ..\..\Middlewares\lwip\lwip_app\lwip_demo.h
 ..\..\output\freertos_app.o: ..\..\Middlewares\lwip\arch\lwipopts.h
 ..\..\output\freertos_app.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+..\..\output\freertos_app.o: ..\..\Drivers\./BSP/DHT11/dht11.h

@@ -12,6 +12,7 @@
 #include <stdbool.h>
 #include "timers.h"
 #include "semphr.h"
+#include "./BSP/DHT11/dht11.h"
 
 
 /******************************************************************************************************/
@@ -309,10 +310,14 @@ void task_1000ms(void *pvParameters)
     }
 }
 
-
+uint8_t temperature = 0;
+uint8_t humidity = 0;
 void Timer10msCallback(TimerHandle_t xTimer)
 {
     task10msCounter++;
+
+    dht11_read_data(&temperature, &humidity);             /* 读取温湿度值 */
+
     xSemaphoreGive(BinarySemaphore_10ms); /* 释放二值信号量 */
 }
 

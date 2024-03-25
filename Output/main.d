@@ -106,3 +106,5 @@
 ..\..\output\main.o: ..\..\Middlewares\FreeRTOS\include\timers.h
 ..\..\output\main.o: ..\..\Middlewares\FreeRTOS\include\semphr.h
 ..\..\output\main.o: ..\..\Middlewares\FreeRTOS\include\queue.h
+..\..\output\main.o: ..\..\Middlewares\lwip\lwip_app\lwip_demo.h
+..\..\output\main.o: ..\..\Drivers\./BSP/DHT11/dht11.h

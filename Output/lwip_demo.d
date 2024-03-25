@@ -132,3 +132,5 @@
 ..\..\output\lwip_demo.o: ..\..\Drivers\./BSP/LED/led.h
 ..\..\output\lwip_demo.o: ..\..\Middlewares\lwip\lwip_app\lwip_demo.h
 ..\..\output\lwip_demo.o: ..\..\Middlewares\lwip\lwip_app\hmac.h
+..\..\output\lwip_demo.o: ..\..\Drivers\./BSP/ADC/adc.h
+..\..\output\lwip_demo.o: ..\..\Drivers\./BSP/DHT11/dht11.h

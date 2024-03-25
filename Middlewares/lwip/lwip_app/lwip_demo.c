@@ -1,23 +1,3 @@
-/**
- ****************************************************************************************************
- * @file        lwip_demo
- * @author      正点原子团队(ALIENTEK)
- * @version     V1.0
- * @date        2022-08-01
- * @brief       lwIP+Aliyun+MQTT实验
- * @license     Copyright (c) 2020-2032, 广州市星翼电子科技有限公司
- ****************************************************************************************************
- * @attention
- *
- * 实验平台:正点原子 探索者 F407开发板
- * 在线视频:www.yuanzige.com
- * 技术论坛:www.openedv.com
- * 公司网址:www.alientek.com
- * 购买地址:openedv.taobao.com
- *
- ****************************************************************************************************
- */
- 
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
@@ -31,6 +11,8 @@
 #include "lwip_demo.h"
 #include "hmac.h"
 #include "string.h"
+#include "./BSP/ADC/adc.h"
+#include "./BSP/DHT11/dht11.h"
 
 
 /* oneNET参考文章：https://open.iot.10086.cn/doc/v5/develop/detail/251 */
@@ -214,15 +196,7 @@ void lwip_demo(void)
                         &mqtt_client_info); /* MQTT连接信息 */
     while(1)
     {
-        if (g_publish_flag == 1)
-        {
-            g_temp = 30 + rand() % 10 + 1;   /* 温度的数据 */
-            g_humid = 54.8 + rand() % 10 + 1;/* 湿度的数据 */
-            sprintf((char *)g_payload_out, "{\"params\":{\"CurrentTemperature\":+%0.1f,\"RelativeHumidity\":%0.1f},\"method\":\"thing.event.property.post\"}", g_temp, g_humid);
-            g_payload_out_len = strlen((char *)g_payload_out);
-            mqtt_publish(g_mqtt_client,DEVICE_PUBLISH,g_payload_out,g_payload_out_len,1,0,mqtt_publish_request_cb,NULL);
-        }
-        
+        upload_data();
         vTaskDelay(1000);
     }
 }
@@ -268,5 +242,22 @@ void lwip_ali_get_password(const char *device_secret, const char *content, char 
     int len = sizeof(buf);
     hmac_sha1((uint8_t *)device_secret, strlen(device_secret), (uint8_t *)content, strlen(content), (uint8_t *)buf, (unsigned int *)&len);
     lwip_ali_hextostr((uint8_t *)password, (uint8_t *)buf, len);
+}
+
+
+extern uint8_t temperature;
+extern uint8_t humidity;
+void upload_data(void)
+{
+    if (g_publish_flag == 1)
+    {
+        // g_temp = (float)temperature;       /* 得到温度值 */
+        // g_humid = (float)humidity;/* 湿度的数据 */
+        g_temp = 23.8;       /* 得到温度值 */
+        g_humid = 56.1;/* 湿度的数据 */
+        sprintf((char *)g_payload_out, "{\"params\":{\"CurrentTemperature\":+%0.1f,\"RelativeHumidity\":%0.1f},\"method\":\"thing.event.property.post\"}", g_temp, g_humid);
+        g_payload_out_len = strlen((char *)g_payload_out);
+        mqtt_publish(g_mqtt_client,DEVICE_PUBLISH,g_payload_out,g_payload_out_len,1,0,mqtt_publish_request_cb,NULL);
+    }
 }
 

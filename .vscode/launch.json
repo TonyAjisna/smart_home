@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/zhaobw/Desktop/smart_home_S1/User",
-      "program": "c:/Users/zhaobw/Desktop/smart_home_S1/User/build/Debug/outDebug",
+      "cwd": "c:/Users/Zhaobw/Desktop/Projects/smart_home/User",
+      "program": "c:/Users/Zhaobw/Desktop/Projects/smart_home/User/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
