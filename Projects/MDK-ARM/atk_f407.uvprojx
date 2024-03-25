@@ -54,7 +54,7 @@
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
           <DebugInformation>1</DebugInformation>
-          <BrowseInformation>0</BrowseInformation>
+          <BrowseInformation>1</BrowseInformation>
           <ListingPath>..\..\Output\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
@@ -409,9 +409,9 @@
               <FilePath>..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c</FilePath>
             </File>
             <File>
-              <FileName>freertos_demo.c</FileName>
+              <FileName>freertos_APP.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\User\freertos_demo.c</FilePath>
+              <FilePath>..\..\User\freertos_APP.c</FilePath>
             </File>
           </Files>
         </Group>

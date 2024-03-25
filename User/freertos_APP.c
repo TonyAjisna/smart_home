@@ -1,24 +1,4 @@
-/**
- ****************************************************************************************************
- * @file        freertos_demo.c
- * @author      正点原子团队(ALIENTEK)
- * @version     V1.0
- * @date        2022-01-11
- * @brief       lwIP+Aliyun+MQTT实验
- * @license     Copyright (c) 2020-2032, 广州市星翼电子科技有限公司
- ****************************************************************************************************
- * @attention
- *
- * 实验平台:正点原子 探索者 F407开发板
- * 在线视频:www.yuanzige.com
- * 技术论坛:www.openedv.com
- * 公司网址:www.alientek.com
- * 购买地址:openedv.taobao.com
- *
- ****************************************************************************************************
- */
- 
-#include "freertos_demo.h"
+#include "freertos_APP.h"
 #include "./BSP/LED/led.h"
 #include "./BSP/LCD/lcd.h"
 #include "./SYSTEM/usart/usart.h"
@@ -29,6 +9,9 @@
 #include "lwipopts.h"
 #include "FreeRTOS.h"
 #include "task.h"
+#include <stdbool.h>
+#include "timers.h"
+#include "semphr.h"
 
 
 /******************************************************************************************************/
@@ -58,6 +41,28 @@ void lwip_demo_task(void *pvParameters);    /* 任务函数 */
 TaskHandle_t LEDTask_Handler;               /* 任务句柄 */
 void led_task(void *pvParameters);          /* 任务函数 */
 
+
+#define TASK_10MS_PRIO 12             /* 任务优先级 */
+#define TASK_10MS_STK_SIZE 128       /* 任务堆栈大小 */
+TaskHandle_t TASK_10MS_Task_Handler; /* 任务句柄 */
+void task_10ms(void *pvParameters);
+
+#define TASK_1000MS_PRIO 12             /* 任务优先级 */
+#define TASK_1000MS_STK_SIZE 128       /* 任务堆栈大小 */
+TaskHandle_t TASK_1000MS_Task_Handler; /* 任务句柄 */
+void task_1000ms(void *pvParameters);
+
+SemaphoreHandle_t BinarySemaphore_10ms;   /* 二值信号量句柄 */
+SemaphoreHandle_t BinarySemaphore_1000ms; /* 二值信号量句柄 */
+
+TimerHandle_t Timer10Timer_Handler;   /* 定时器1句柄 */
+TimerHandle_t Timer1000Timer_Handler; /* 定时器2句柄 */
+
+void Timer10msCallback(TimerHandle_t xTimer);   /* 定时器1超时回调函数 */
+void Timer1000msCallback(TimerHandle_t xTimer); /* 定时器2超时回调函数 */
+
+uint8_t task10msCounter = 0;
+uint8_t task1000msCounter = 0;
 /******************************************************************************************************/
 
 
@@ -162,6 +167,44 @@ void start_task(void *pvParameters)
     
     taskENTER_CRITICAL();           /* 进入临界区 */
 
+    /* 创建二值信号量 */
+    if (BinarySemaphore_10ms == NULL)
+    {
+        BinarySemaphore_10ms = xSemaphoreCreateBinary();
+    }
+    if (BinarySemaphore_1000ms == NULL)
+    {
+        BinarySemaphore_1000ms = xSemaphoreCreateBinary();
+    }
+
+    /* 定时器1创建为周期定时器 */
+    Timer10Timer_Handler = xTimerCreate((const char *)"Timer10ms",                   /* 定时器名 */
+                                        (TickType_t)10,                              /* 定时器超时时间 */
+                                        (UBaseType_t)pdTRUE,                         /* 周期定时器 */
+                                        (void *)1,                                   /* 定时器ID */
+                                        (TimerCallbackFunction_t)Timer10msCallback); /* 定时器回调函数 */
+    /* 定时器2创建为周期定时器 */
+    Timer1000Timer_Handler = xTimerCreate((const char *)"Timer1000ms",                   /* 定时器名 */
+                                          (TickType_t)1000,                              /* 定时器超时时间 */
+                                          (UBaseType_t)pdTRUE,                           /* 单次定时器 */
+                                          (void *)2,                                     /* 定时器ID */
+                                          (TimerCallbackFunction_t)Timer1000msCallback); /* 定时器回调函数 */
+   
+
+    /* 创建任务1 */
+    xTaskCreate((TaskFunction_t)task_10ms,
+                (const char *)"task_10ms",
+                (uint16_t)TASK_10MS_STK_SIZE,
+                (void *)NULL,
+                (UBaseType_t)TASK_10MS_PRIO,
+                (TaskHandle_t *)&TASK_10MS_Task_Handler);
+    /* 创建任务2 */
+    xTaskCreate((TaskFunction_t)task_1000ms,
+                (const char *)"task_1000ms",
+                (uint16_t)TASK_1000MS_STK_SIZE,
+                (void *)NULL,
+                (UBaseType_t)TASK_1000MS_PRIO,
+                (TaskHandle_t *)&TASK_1000MS_Task_Handler);
     /* 创建lwIP任务 */
     xTaskCreate((TaskFunction_t )lwip_demo_task,
                 (const char*    )"lwip_demo_task",
@@ -191,11 +234,40 @@ void start_task(void *pvParameters)
 void lwip_demo_task(void *pvParameters)
 {
     pvParameters = pvParameters;
+    uint8_t key = 0;
     
     lwip_demo();
     
     while (1)
     {
+        if ((Timer10Timer_Handler != NULL) && (Timer1000Timer_Handler != NULL))
+        {
+            key = key_scan(0);
+
+            switch (key)
+            {
+            case KEY0_PRES:
+            {
+                xTimerStart((TimerHandle_t)Timer10Timer_Handler,   /* 待启动的定时器句柄 */
+                            (TickType_t)portMAX_DELAY);            /* 等待系统启动定时器的最大时间 */
+                xTimerStart((TimerHandle_t)Timer1000Timer_Handler, /* 待启动的定时器句柄 */
+                            (TickType_t)portMAX_DELAY);            /* 等待系统启动定时器的最大时间 */
+                break;
+            }
+            case KEY1_PRES:
+            {
+                xTimerStop((TimerHandle_t)Timer10Timer_Handler,   /* 待停止的定时器句柄 */
+                           (TickType_t)portMAX_DELAY);            /* 等待系统停止定时器的最大时间 */
+                xTimerStop((TimerHandle_t)Timer1000Timer_Handler, /* 待停止的定时器句柄 */
+                           (TickType_t)portMAX_DELAY);            /* 等待系统停止定时器的最大时间 */
+                break;
+            }
+            default:
+            {
+                break;
+            }
+            }
+        }
         vTaskDelay(5);
     }
 }
@@ -214,4 +286,38 @@ void led_task(void *pvParameters)
         LED1_TOGGLE();
         vTaskDelay(1000);
     }
+}
+
+
+void task_10ms(void *pvParameters)
+{
+    while (1)
+    {
+        xSemaphoreTake(BinarySemaphore_10ms, portMAX_DELAY); /* 获取二值信号量 */
+        printf("task10msCounter: %u\n", task10msCounter);
+    }
+}
+
+extern float g_temp;    /* 温度值 */
+extern float g_humid;   /* 湿度值 */
+void task_1000ms(void *pvParameters)
+{
+    while (1)
+    {
+        xSemaphoreTake(BinarySemaphore_1000ms, portMAX_DELAY); /* 获取二值信号量 */
+        printf("task1000msCounter: %u\n", task1000msCounter);
+    }
+}
+
+
+void Timer10msCallback(TimerHandle_t xTimer)
+{
+    task10msCounter++;
+    xSemaphoreGive(BinarySemaphore_10ms); /* 释放二值信号量 */
+}
+
+void Timer1000msCallback(TimerHandle_t xTimer)
+{
+    task1000msCounter++;
+    xSemaphoreGive(BinarySemaphore_1000ms); /* 释放二值信号量 */
 }

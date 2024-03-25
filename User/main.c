@@ -1,23 +1,3 @@
-/**
- ****************************************************************************************************
- * @file        main.c
- * @author      ÕýµãÔ­×ÓÍÅ¶Ó(ALIENTEK)
- * @version     V1.0
- * @date        2022-5-04
- * @brief       lwIP+Aliyun+MQTTÊµÑé
- * @license     Copyright (c) 2020-2032, ¹ãÖÝÊÐÐÇÒíµç×Ó¿Æ¼¼ÓÐÏÞ¹«Ë¾
- ****************************************************************************************************
- * @attention
- *
- * ÊµÑéÆ½Ì¨:ÕýµãÔ­×Ó Ì½Ë÷Õß F407¿ª·¢°å
- * ÔÚÏßÊÓÆµ:www.yuanzige.com
- * ¼¼ÊõÂÛÌ³:www.openedv.com
- * ¹«Ë¾ÍøÖ·:www.alientek.com
- * ¹ºÂòµØÖ·:openedv.taobao.com
- *
- ****************************************************************************************************
- */
-
 #include "./SYSTEM/sys/sys.h"
 #include "./SYSTEM/usart/usart.h"
 #include "./SYSTEM/delay/delay.h"
@@ -27,24 +7,24 @@
 #include "./BSP/KEY/key.h"
 #include "./BSP/SRAM/sram.h"
 #include "./MALLOC/malloc.h"
-#include "freertos_demo.h"
+#include "freertos_APP.h"
 
 
 int main(void)
 {
-    HAL_Init();                         /* ³õÊ¼»¯HAL¿â */
-    sys_stm32_clock_init(336, 8, 2, 7); /* ÉèÖÃÊ±ÖÓ,168Mhz */
-    delay_init(168);                    /* ÑÓÊ±³õÊ¼»¯ */
-    usart_init(115200);                 /* ´®¿Ú³õÊ¼»¯Îª115200 */
-    usmart_dev.init(84);                /* ³õÊ¼»¯USMART */
-    led_init();                         /* ³õÊ¼»¯LED */
-    lcd_init();                         /* ³õÊ¼»¯LCD */
-    key_init();                         /* ³õÊ¼»¯°´¼ü */
-    sram_init();                        /* SRAM³õÊ¼»¯ */
+    HAL_Init();                         /* ï¿½ï¿½Ê¼ï¿½ï¿½HALï¿½ï¿½ */
+    sys_stm32_clock_init(336, 8, 2, 7); /* ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½,168Mhz */
+    delay_init(168);                    /* ï¿½ï¿½Ê±ï¿½ï¿½Ê¼ï¿½ï¿½ */
+    usart_init(115200);                 /* ï¿½ï¿½ï¿½Ú³ï¿½Ê¼ï¿½ï¿½Îª115200 */
+    usmart_dev.init(84);                /* ï¿½ï¿½Ê¼ï¿½ï¿½USMART */
+    led_init();                         /* ï¿½ï¿½Ê¼ï¿½ï¿½LED */
+    lcd_init();                         /* ï¿½ï¿½Ê¼ï¿½ï¿½LCD */
+    key_init();                         /* ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+    sram_init();                        /* SRAMï¿½ï¿½Ê¼ï¿½ï¿½ */
     
-    my_mem_init(SRAMIN);                /* ³õÊ¼»¯ÄÚ²¿SRAMÄÚ´æ³Ø */
-    my_mem_init(SRAMEX);                /* ³õÊ¼»¯Íâ²¿SRAMÄÚ´æ³Ø */
-    my_mem_init(SRAMCCM);               /* ³õÊ¼»¯ÄÚ²¿CCMÄÚ´æ³Ø */
+    my_mem_init(SRAMIN);                /* ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ú²ï¿½SRAMï¿½Ú´ï¿½ï¿½ */
+    my_mem_init(SRAMEX);                /* ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½â²¿SRAMï¿½Ú´ï¿½ï¿½ */
+    my_mem_init(SRAMCCM);               /* ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ú²ï¿½CCMï¿½Ú´ï¿½ï¿½ */
 
-    freertos_demo();                    /* ´´½¨lwIPµÄÈÎÎñº¯Êý */
+    freertos_demo();                    /* ï¿½ï¿½ï¿½ï¿½lwIPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 }

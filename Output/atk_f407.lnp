@@ -3,7 +3,7 @@
 "..\..\output\main.o"
 "..\..\output\stm32f4xx_it.o"
 "..\..\output\system_stm32f4xx.o"
-"..\..\output\freertos_demo.o"
+"..\..\output\freertos_app.o"
 "..\..\output\delay.o"
 "..\..\output\sys.o"
 "..\..\output\usart.o"

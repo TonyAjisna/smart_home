@@ -93,4 +93,16 @@
 ..\..\output\main.o: ..\..\Drivers\./BSP/KEY/key.h
 ..\..\output\main.o: ..\..\Drivers\./BSP/SRAM/sram.h
 ..\..\output\main.o: ..\..\Middlewares\./MALLOC/malloc.h
-..\..\output\main.o: ..\..\User\freertos_demo.h
+..\..\output\main.o: ..\..\User\freertos_APP.h
+..\..\output\main.o: ..\..\Middlewares\FreeRTOS\include\FreeRTOS.h
+..\..\output\main.o: ..\..\User\FreeRTOSConfig.h
+..\..\output\main.o: ..\..\Middlewares\FreeRTOS\include\projdefs.h
+..\..\output\main.o: ..\..\Middlewares\FreeRTOS\include\portable.h
+..\..\output\main.o: ..\..\Middlewares\FreeRTOS\include\deprecated_definitions.h
+..\..\output\main.o: ..\..\Middlewares\FreeRTOS\portable\RVDS\ARM_CM4F\portmacro.h
+..\..\output\main.o: ..\..\Middlewares\FreeRTOS\include\mpu_wrappers.h
+..\..\output\main.o: ..\..\Middlewares\FreeRTOS\include\task.h
+..\..\output\main.o: ..\..\Middlewares\FreeRTOS\include\list.h
+..\..\output\main.o: ..\..\Middlewares\FreeRTOS\include\timers.h
+..\..\output\main.o: ..\..\Middlewares\FreeRTOS\include\semphr.h
+..\..\output\main.o: ..\..\Middlewares\FreeRTOS\include\queue.h
