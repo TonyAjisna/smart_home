@@ -32,7 +32,7 @@
 /* DHT11 引脚 定义 */
 
 #define DHT11_DQ_GPIO_PORT                  GPIOG
-#define DHT11_DQ_GPIO_PIN                   GPIO_PIN_9
+#define DHT11_DQ_GPIO_PIN                   GPIO_PIN_13
 #define DHT11_DQ_GPIO_CLK_ENABLE()          do{ __HAL_RCC_GPIOG_CLK_ENABLE(); }while(0)     /* PG口时钟使能 */
 
 /******************************************************************************************/

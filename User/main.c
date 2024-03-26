@@ -23,7 +23,7 @@ int main(void)
     lcd_init();                        
     key_init();                        
     sram_init(); 
-    adc_temperature_init();                 /* 初始化ADC */                      
+    adc_temperature_init();                 /* 初�?�化ADC */                      
     dht11_init();
 
     my_mem_init(SRAMIN);                

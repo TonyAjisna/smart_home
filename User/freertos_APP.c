@@ -236,40 +236,49 @@ void lwip_demo_task(void *pvParameters)
 {
     pvParameters = pvParameters;
     uint8_t key = 0;
+
+    if ((Timer10Timer_Handler != NULL) && (Timer1000Timer_Handler != NULL))
+    {
+        xTimerStart((TimerHandle_t)Timer10Timer_Handler,   /* 待启动的定时器句柄 */
+                            (TickType_t)portMAX_DELAY);            /* 等待系统启动定时器的最大时间 */
+        xTimerStart((TimerHandle_t)Timer1000Timer_Handler, /* 待启动的定时器句柄 */
+                            (TickType_t)portMAX_DELAY);            /* 等待系统启动定时器的最大时间 */
+    }
+    
     
     lwip_demo();
     
     while (1)
     {
-        if ((Timer10Timer_Handler != NULL) && (Timer1000Timer_Handler != NULL))
-        {
-            key = key_scan(0);
+        // if ((Timer10Timer_Handler != NULL) && (Timer1000Timer_Handler != NULL))
+        // {
+        //     key = key_scan(0);
 
-            switch (key)
-            {
-            case KEY0_PRES:
-            {
-                xTimerStart((TimerHandle_t)Timer10Timer_Handler,   /* 待启动的定时器句柄 */
-                            (TickType_t)portMAX_DELAY);            /* 等待系统启动定时器的最大时间 */
-                xTimerStart((TimerHandle_t)Timer1000Timer_Handler, /* 待启动的定时器句柄 */
-                            (TickType_t)portMAX_DELAY);            /* 等待系统启动定时器的最大时间 */
-                break;
-            }
-            case KEY1_PRES:
-            {
-                xTimerStop((TimerHandle_t)Timer10Timer_Handler,   /* 待停止的定时器句柄 */
-                           (TickType_t)portMAX_DELAY);            /* 等待系统停止定时器的最大时间 */
-                xTimerStop((TimerHandle_t)Timer1000Timer_Handler, /* 待停止的定时器句柄 */
-                           (TickType_t)portMAX_DELAY);            /* 等待系统停止定时器的最大时间 */
-                break;
-            }
-            default:
-            {
-                break;
-            }
-            }
-        }
-        vTaskDelay(5);
+        //     switch (key)
+        //     {
+        //     case KEY0_PRES:
+        //     {
+        //         xTimerStart((TimerHandle_t)Timer10Timer_Handler,   /* 待启动的定时器句柄 */
+        //                     (TickType_t)portMAX_DELAY);            /* 等待系统启动定时器的最大时间 */
+        //         xTimerStart((TimerHandle_t)Timer1000Timer_Handler, /* 待启动的定时器句柄 */
+        //                     (TickType_t)portMAX_DELAY);            /* 等待系统启动定时器的最大时间 */
+        //         break;
+        //     }
+        //     case KEY1_PRES:
+        //     {
+        //         xTimerStop((TimerHandle_t)Timer10Timer_Handler,   /* 待停止的定时器句柄 */
+        //                    (TickType_t)portMAX_DELAY);            /* 等待系统停止定时器的最大时间 */
+        //         xTimerStop((TimerHandle_t)Timer1000Timer_Handler, /* 待停止的定时器句柄 */
+        //                    (TickType_t)portMAX_DELAY);            /* 等待系统停止定时器的最大时间 */
+        //         break;
+        //     }
+        //     default:
+        //     {
+        //         break;
+        //     }
+        //     }
+        // }
+        // vTaskDelay(5);
     }
 }
 
@@ -315,9 +324,6 @@ uint8_t humidity = 0;
 void Timer10msCallback(TimerHandle_t xTimer)
 {
     task10msCounter++;
-
-    dht11_read_data(&temperature, &humidity);             /* 读取温湿度值 */
-
     xSemaphoreGive(BinarySemaphore_10ms); /* 释放二值信号量 */
 }
 

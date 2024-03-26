@@ -251,8 +251,9 @@ void upload_data(void)
 {
     if (g_publish_flag == 1)
     {
-        // g_temp = (float)temperature;       /* 得到温度值 */
-        // g_humid = (float)humidity;/* 湿度的数据 */
+        dht11_read_data(&temperature, &humidity);             /* 读取温湿度值 */
+        g_temp = (float)temperature;       /* 得到温度值 */
+        g_humid = (float)humidity;/* 湿度的数据 */
         g_temp = 23.8;       /* 得到温度值 */
         g_humid = 56.1;/* 湿度的数据 */
         sprintf((char *)g_payload_out, "{\"params\":{\"CurrentTemperature\":+%0.1f,\"RelativeHumidity\":%0.1f},\"method\":\"thing.event.property.post\"}", g_temp, g_humid);
