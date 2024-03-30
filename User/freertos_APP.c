@@ -13,6 +13,7 @@
 #include "timers.h"
 #include "semphr.h"
 #include "./BSP/DHT11/dht11.h"
+#include "play.h"
 
 
 /******************************************************************************************************/
@@ -163,7 +164,7 @@ void start_task(void *pvParameters)
     {
         vTaskDelay(5);
     }
-    
+
 
     
     taskENTER_CRITICAL();           /* 进入临界区 */
@@ -247,10 +248,10 @@ void lwip_demo_task(void *pvParameters)
     
     
     lwip_demo();
-    
+
     while (1)
     {
-        // if ((Timer10Timer_Handler != NULL) && (Timer1000Timer_Handler != NULL))
+// if ((Timer10Timer_Handler != NULL) && (Timer1000Timer_Handler != NULL))
         // {
         //     key = key_scan(0);
 
@@ -304,7 +305,10 @@ void task_10ms(void *pvParameters)
     while (1)
     {
         xSemaphoreTake(BinarySemaphore_10ms, portMAX_DELAY); /* 获取二值信号量 */
-        printf("task10msCounter: %u\n", task10msCounter);
+        if ( task10msCounter % 100 == 0)
+        {
+            printf("task10msCounter: %u\n", task10msCounter);
+        } 
     }
 }
 
@@ -316,6 +320,8 @@ void task_1000ms(void *pvParameters)
     {
         xSemaphoreTake(BinarySemaphore_1000ms, portMAX_DELAY); /* 获取二值信号量 */
         printf("task1000msCounter: %u\n", task1000msCounter);
+
+        atk_mw579_transmission();       /* 蓝牙通信 */
     }
 }
 

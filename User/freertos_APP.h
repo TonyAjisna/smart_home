@@ -11,7 +11,7 @@
 
 void freertos_demo(void); 
 
-// 5ms定时器超时回调函�?
+// 5ms定时器超时回调函�?
 void Timer10msCallback(TimerHandle_t xTimer);
 void Timer1000msCallback(TimerHandle_t xTimer);
 

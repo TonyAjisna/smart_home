@@ -23,13 +23,12 @@ int main(void)
     lcd_init();                        
     key_init();                        
     sram_init(); 
-    adc_temperature_init();                 /* ÂàùÂ?ãÂåñADC */                      
-    dht11_init();
-
+    adc_temperature_init();         /* ?????????? */                          
+    dht11_init();                   /* ???dht11?????? */
     my_mem_init(SRAMIN);                
     my_mem_init(SRAMEX);                
     my_mem_init(SRAMCCM);               
-
+    atk_mw579_play();               /* º”‘ÿ¿∂—¿ */
     freertos_demo();                 
 }
 

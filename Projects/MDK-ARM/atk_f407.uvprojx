@@ -413,6 +413,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\User\freertos_APP.c</FilePath>
             </File>
+            <File>
+              <FileName>play.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\play.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -577,6 +582,16 @@
               <FileName>dht11.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Drivers\BSP\DHT11\dht11.c</FilePath>
+            </File>
+            <File>
+              <FileName>atk_mw579.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Drivers\BSP\ATK_MW579\atk_mw579.c</FilePath>
+            </File>
+            <File>
+              <FileName>atk_mw579_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Drivers\BSP\ATK_MW579\atk_mw579_uart.c</FilePath>
             </File>
           </Files>
         </Group>
