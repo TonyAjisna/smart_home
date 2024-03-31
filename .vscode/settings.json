@@ -3,6 +3,9 @@
         "demo.h": "c",
         "atk_mw579.h": "c",
         "usart.h": "c",
-        "led.h": "c"
+        "led.h": "c",
+        "stm32f1xx_hal_conf.h": "c",
+        "stm32f1xx_hal_rcc.h": "c",
+        "stm32_hal_legacy.h": "c"
     }
 }

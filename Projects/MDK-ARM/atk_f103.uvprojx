@@ -391,7 +391,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>User</GroupName>
+          <GroupName>Users</GroupName>
           <Files>
             <File>
               <FileName>main.c</FileName>

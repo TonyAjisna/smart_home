@@ -23,7 +23,11 @@ void demo_run(void)
     ret = atk_mw579_init(ATK_MW579_UART_BAUDRATE_115200);
     if (ret != 0)
     {
-        printf("ATK-MW579 init failed!\r\n");
+        printf("ATK-MW579-SLAVE init failed!\r\n");
+    }
+    else
+    {
+        printf("ATK-MW579-SLAVE init success!\r\n");
     }
     
     /* 配置ATK-MW579 */
@@ -40,7 +44,11 @@ void demo_run(void)
     ret += atk_mw579_set_mode(ATK_MW579_MODE_S);
     if (ret != 0)
     {
-        printf("ATK-MW579 config failed!\r\n");
+        printf("ATK-MW579-SLAVE config failed!\r\n");
+    }
+    else
+    {
+            printf("ATK-MW579-SLAVE config success!\r\n");
     }
     
     /* 重新开始接收数据 */
@@ -52,11 +60,11 @@ void demo_run(void)
         /* 判断是否连接至主设备 */
         if (atk_mw579_get_conn_sta() == ATK_MW579_CONNECTED)
         {
-            
             if (t % 100 == 0)
             {
                 /* 透传发送数据至主设备 */
                 atk_mw579_uart_printf("From ATK-MW579\r\n");
+                printf("ATK-MW579-MASTER connect success!\r\n");
                 t = 0;
             }
             
@@ -69,6 +77,10 @@ void demo_run(void)
             }
             
             delay_ms(10);
+        }
+        else
+        {
+            printf("ATK-MW579-MASTER connect failed!\r\n");
         }
     }
 }

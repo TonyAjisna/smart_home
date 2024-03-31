@@ -22,20 +22,28 @@
 #define __ATK_MW579_UART_H
 
 #include "./SYSTEM/sys/sys.h"
+#include "./stm32f1xx_hal_rcc.h"
+#include "./Legacy/stm32_hal_legacy.h"
 
 /* 引脚定义 */
-#define ATK_MW579_UART_TX_GPIO_PORT         GPIOC
-#define ATK_MW579_UART_TX_GPIO_PIN          GPIO_PIN_12
-#define ATK_MW579_UART_TX_GPIO_CLK_ENABLE() do{ __HAL_RCC_GPIOC_CLK_ENABLE(); }while(0)
+#define ATK_MW579_UART_TX_GPIO_PORT         GPIOB
+#define ATK_MW579_UART_TX_GPIO_PIN          GPIO_PIN_10
+#define ATK_MW579_UART_TX_GPIO_CLK_ENABLE() do{ __HAL_RCC_GPIOB_CLK_ENABLE(); }while(0)
 
-#define ATK_MW579_UART_RX_GPIO_PORT         GPIOD
-#define ATK_MW579_UART_RX_GPIO_PIN          GPIO_PIN_2
-#define ATK_MW579_UART_RX_GPIO_CLK_ENABLE() do{ __HAL_RCC_GPIOD_CLK_ENABLE(); }while(0)
+#define ATK_MW579_UART_RX_GPIO_PORT         GPIOB
+#define ATK_MW579_UART_RX_GPIO_PIN          GPIO_PIN_11
+#define ATK_MW579_UART_RX_GPIO_CLK_ENABLE() do{ __HAL_RCC_GPIOB_CLK_ENABLE(); }while(0)
 
-#define ATK_MW579_UART_INTERFACE            UART5
-#define ATK_MW579_UART_IRQn                 UART5_IRQn
-#define ATK_MW579_UART_IRQHandler           UART5_IRQHandler
-#define ATK_MW579_UART_CLK_ENABLE()         do{ __HAL_RCC_UART5_CLK_ENABLE(); }while(0)
+#define ATK_MW579_UART_INTERFACE            USART3
+#define ATK_MW579_UART_IRQn                 USART3_IRQn
+#define ATK_MW579_UART_IRQHandler           USART3_IRQHandler
+#define ATK_MW579_UART_CLK_ENABLE()         do { \
+                                        __IO uint32_t tmpreg; \
+                                        SET_BIT(RCC->APB1ENR, RCC_APB1ENR_USART3EN);\
+                                        /* Delay after an RCC peripheral clock enabling */ \
+                                        tmpreg = READ_BIT(RCC->APB1ENR, RCC_APB1ENR_USART3EN);\
+                                        UNUSED(tmpreg); \
+                                      } while(0U)
 
 /* UART收发缓冲大小 */
 #define ATK_MW579_UART_RX_BUF_SIZE          2048
