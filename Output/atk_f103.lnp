@@ -4,6 +4,7 @@
 "..\..\output\stm32f1xx_it.o"
 "..\..\output\system_stm32f1xx.o"
 "..\..\output\demo.o"
+"..\..\output\bsp_moto.o"
 "..\..\output\stm32f1xx_hal.o"
 "..\..\output\stm32f1xx_hal_cortex.o"
 "..\..\output\stm32f1xx_hal_dma.o"

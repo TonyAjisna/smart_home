@@ -413,6 +413,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\Users\demo.c</FilePath>
             </File>
+            <File>
+              <FileName>bsp_moto.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Users\bsp_moto.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

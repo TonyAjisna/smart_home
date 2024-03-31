@@ -3,10 +3,13 @@
 #include "./SYSTEM/delay/delay.h"
 #include "./BSP/LED/led.h"
 #include "demo.h"
+#include "bsp_moto.h"
+#include <stdint.h>
+#include "./stm32f1xx_hal_rcc_ex.h"
 
 void show_mesg(void)
 {
-    /* ´®¿ÚÊä³öÊµÑéÐÅÏ¢ */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½Ï¢ */
     printf("\n");
     printf("********************************\r\n");
     printf("STM32\r\n");
@@ -18,11 +21,22 @@ void show_mesg(void)
 
 int main(void)
 {
-    HAL_Init();                                             /* ³õÊ¼»¯HAL¿â */
-    sys_stm32_clock_init(RCC_PLL_MUL9);                     /* ÉèÖÃÊ±ÖÓ, 72Mhz */
-    delay_init(72);                                         /* ÑÓÊ±³õÊ¼»¯ */
-    usart_init(115200);                                     /* ³õÊ¼»¯´®¿Ú */
-    led_init();                                             /* ³õÊ¼»¯LED */
-    show_mesg();                        /* ÏÔÊ¾ÊµÑéÐÅÏ¢ */
-    demo_run();                         /* ÔËÐÐÊ¾Àý³ÌÐò */
+    uint32_t t = 0;
+    HAL_Init();                                             /* ï¿½ï¿½Ê¼ï¿½ï¿½HALï¿½ï¿½ */
+    sys_stm32_clock_init(RCC_PLL_MUL9);                     /* ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½, 72Mhz */
+    delay_init(72);                                         /* ï¿½ï¿½Ê±ï¿½ï¿½Ê¼ï¿½ï¿½ */
+    usart_init(115200);                                     /* ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+    led_init();                                             /* ï¿½ï¿½Ê¼ï¿½ï¿½LED */
+    show_mesg();                        /* ï¿½ï¿½Ê¾Êµï¿½ï¿½ï¿½ï¿½Ï¢ */
+    // demo_run();                         /* ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+    GPIO_Moto_Init();
+
+    while (1)
+    {
+        Moto1_Forward();
+        delay_ms(1000);
+        Moto1_Reverse();
+        delay_ms(1000);
+    }
+    
 }
