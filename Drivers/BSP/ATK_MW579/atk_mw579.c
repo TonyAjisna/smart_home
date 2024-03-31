@@ -831,12 +831,12 @@ uint8_t atk_mw579_scan_slave(void)
  * @retval      ATK_MW579_EOK   : ATK-MW579连接周围从设备成功
  *              ATK_MW579_ERROR : ATK-MW579连接周围从设备失败
  */
-uint8_t atk_mw579_conn_slave(uint8_t id)
+uint8_t atk_mw579_connadd_slave(char id[13])
 {
     uint8_t ret;
     char cmd[12];
     
-    sprintf(cmd, "AT+CONN=%d", id);
+    sprintf(cmd, "AT+CONNADD=%s", id);
     ret = atk_mw579_send_at_cmd(cmd, "OK", 1000);
     if (ret != ATK_MW579_EOK)
     {

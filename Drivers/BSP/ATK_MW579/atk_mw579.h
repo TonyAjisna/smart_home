@@ -1,19 +1,19 @@
 /**
  ****************************************************************************************************
  * @file        atk_mw579.h
- * @author      ÕýµãÔ­×ÓÍÅ¶Ó(ALIENTEK)
+ * @author      ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½ï¿½Å¶ï¿½(ALIENTEK)
  * @version     V1.0
  * @date        2022-06-21
- * @brief       ATK-MW579Ä£¿éÇý¶¯´úÂë
- * @license     Copyright (c) 2020-2032, ¹ãÖÝÊÐÐÇÒíµç×Ó¿Æ¼¼ÓÐÏÞ¹«Ë¾
+ * @brief       ATK-MW579Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @license     Copyright (c) 2020-2032, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿Æ¼ï¿½ï¿½ï¿½ï¿½Þ¹ï¿½Ë¾
  ****************************************************************************************************
  * @attention
  *
- * ÊµÑéÆ½Ì¨:ÕýµãÔ­×Ó Ì½Ë÷Õß F407¿ª·¢°å
- * ÔÚÏßÊÓÆµ:www.yuanzige.com
- * ¼¼ÊõÂÛÌ³:www.openedv.com
- * ¹«Ë¾ÍøÖ·:www.alientek.com
- * ¹ºÂòµØÖ·:openedv.taobao.com
+ * Êµï¿½ï¿½Æ½Ì¨:ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½ Ì½ï¿½ï¿½ï¿½ï¿½ F407ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµ:www.yuanzige.com
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì³:www.openedv.com
+ * ï¿½ï¿½Ë¾ï¿½ï¿½Ö·:www.alientek.com
+ * ï¿½ï¿½ï¿½ï¿½ï¿½Ö·:openedv.taobao.com
  *
  ****************************************************************************************************
  */
@@ -24,7 +24,7 @@
 #include "./SYSTEM/sys/sys.h"
 #include "./BSP/ATK_MW579/atk_mw579_uart.h"
 
-/* Òý½Å¶¨Òå */
+/* ï¿½ï¿½ï¿½Å¶ï¿½ï¿½ï¿½ */
 #define ATK_MW579_STA_GPIO_PORT             GPIOF
 #define ATK_MW579_STA_GPIO_PIN              GPIO_PIN_6
 #define ATK_MW579_STA_GPIO_CLK_ENABLE()     do{ __HAL_RCC_GPIOF_CLK_ENABLE(); }while(0)
@@ -32,21 +32,21 @@
 #define ATK_MW579_WKUP_GPIO_PIN             GPIO_PIN_0
 #define ATK_MW579_WKUP_GPIO_CLK_ENABLE()    do{ __HAL_RCC_GPIOC_CLK_ENABLE(); }while(0)
 
-/* IO²Ù×÷ */
+/* IOï¿½ï¿½ï¿½ï¿½ */
 #define ATK_MW579_READ_STA()                HAL_GPIO_ReadPin(ATK_MW579_STA_GPIO_PORT, ATK_MW579_STA_GPIO_PIN)
 #define ATK_MW579_WKUP(x)                   do{ x ?                                                                                     \
                                                 HAL_GPIO_WritePin(ATK_MW579_WKUP_GPIO_PORT, ATK_MW579_WKUP_GPIO_PIN, GPIO_PIN_SET) :    \
                                                 HAL_GPIO_WritePin(ATK_MW579_WKUP_GPIO_PORT, ATK_MW579_WKUP_GPIO_PIN, GPIO_PIN_RESET);   \
                                             }while(0)
 
-/* Á¬½Ó×´Ì¬Ã¶¾Ù */
+/* ï¿½ï¿½ï¿½ï¿½×´Ì¬Ã¶ï¿½ï¿½ */
 typedef enum
 {
-    ATK_MW579_CONNECTED = 0x00,             /* ÒÑÁ¬½Ó */
-    ATK_MW579_DISCONNECTED,                 /* Î´Á¬½Ó */
+    ATK_MW579_CONNECTED = 0x00,             /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+    ATK_MW579_DISCONNECTED,                 /* Î´ï¿½ï¿½ï¿½ï¿½ */
 } atk_mw579_conn_sta_t;
 
-/* ·¢Éä¹¦ÂÊÃ¶¾Ù */
+/* ï¿½ï¿½ï¿½ä¹¦ï¿½ï¿½Ã¶ï¿½ï¿½ */
 typedef enum
 {
     ATK_MW579_TPL_N20DBM = 0x00,            /* -20dBm */
@@ -59,7 +59,7 @@ typedef enum
     ATK_MW579_TPL_P3DBM,                    /* +3dBm */
 } atk_mw579_tpl_t;
 
-/* ´®¿Ú²¨ÌØÂÊÃ¶¾Ù */
+/* ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ */
 typedef enum
 {
     ATK_MW579_UART_BAUDRATE_1200 = 0x00,    /* 1200bps */
@@ -77,120 +77,120 @@ typedef enum
     ATK_MW579_UART_BAUDRATE_230400,         /* 230400bps */
 } atk_mw579_uart_baudrate_t;
 
-/*´®¿ÚÊý¾ÝÎ»Ã¶¾Ù */
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»Ã¶ï¿½ï¿½ */
 typedef enum
 {
-    ATK_MW579_UART_DATA_5 = 0x00,           /* 5Î»Êý¾ÝÎ» */
-    ATK_MW579_UART_DATA_6,                  /* 6Î»Êý¾ÝÎ» */
-    ATK_MW579_UART_DATA_7,                  /* 7Î»Êý¾ÝÎ» */
-    ATK_MW579_UART_DATA_8,                  /* 8Î»Êý¾ÝÎ» */
+    ATK_MW579_UART_DATA_5 = 0x00,           /* 5Î»ï¿½ï¿½ï¿½ï¿½Î» */
+    ATK_MW579_UART_DATA_6,                  /* 6Î»ï¿½ï¿½ï¿½ï¿½Î» */
+    ATK_MW579_UART_DATA_7,                  /* 7Î»ï¿½ï¿½ï¿½ï¿½Î» */
+    ATK_MW579_UART_DATA_8,                  /* 8Î»ï¿½ï¿½ï¿½ï¿½Î» */
 } atk_mw579_uart_data_t;
 
-/* ´®¿ÚÐ£ÑéÎ»Ã¶¾Ù */
+/* ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½Î»Ã¶ï¿½ï¿½ */
 typedef enum
 {
-    ATK_MW579_UART_PARI_NONE = 0x00,        /* ÎÞÐ£Ñé */
-    ATK_MW579_UART_PARI_ODD,                /* ÆæÐ£Ñé */
-    ATK_MW579_UART_PARI_EVEN,               /* Å¼Ð£Ñé */
+    ATK_MW579_UART_PARI_NONE = 0x00,        /* ï¿½ï¿½Ð£ï¿½ï¿½ */
+    ATK_MW579_UART_PARI_ODD,                /* ï¿½ï¿½Ð£ï¿½ï¿½ */
+    ATK_MW579_UART_PARI_EVEN,               /* Å¼Ð£ï¿½ï¿½ */
 } atk_mw579_uart_pari_t;
 
-/* ´®¿ÚÍ£Ö¹Î»Ã¶¾Ù */
+/* ï¿½ï¿½ï¿½ï¿½Í£Ö¹Î»Ã¶ï¿½ï¿½ */
 typedef enum
 {
     ATK_MW579_UART_STOP_1 = 0x00,           /* 1Î»Í£Ö¹Î» */
     ATK_MW579_UART_STOP_2,                  /* 2Î»Í£Ö¹Î» */
 } atk_mw579_uart_stop_t;
 
-/* Á´Â·Æ¥ÅäÁ¬½ÓÃ¶¾Ù */
+/* ï¿½ï¿½Â·Æ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ */
 typedef enum
 {
-    ATK_MW579_LINKPASSEN_ON = 0x00,         /* Ê¹ÄÜÁ´Â·Æ¥Åä */
-    ATK_MW579_LINKPASSEN_OFF,               /* ¹Ø±ÕÁ´Â·Æ¥Åä */
+    ATK_MW579_LINKPASSEN_ON = 0x00,         /* Ê¹ï¿½ï¿½ï¿½ï¿½Â·Æ¥ï¿½ï¿½ */
+    ATK_MW579_LINKPASSEN_OFF,               /* ï¿½Ø±ï¿½ï¿½ï¿½Â·Æ¥ï¿½ï¿½ */
 } atk_mw579_linkpassen_t;
 
-/* °åÔØLEDÃ¶¾Ù */
+/* ï¿½ï¿½ï¿½ï¿½LEDÃ¶ï¿½ï¿½ */
 typedef enum
 {
-    ATK_MW579_LEDEN_ON = 0x00,              /* Ê¹ÄÜ°åÔØLED */
-    ATK_MW579_LEDEN_OFF,                    /* ¹Ø±Õ°åÔØLED */
+    ATK_MW579_LEDEN_ON = 0x00,              /* Ê¹ï¿½Ü°ï¿½ï¿½ï¿½LED */
+    ATK_MW579_LEDEN_OFF,                    /* ï¿½Ø±Õ°ï¿½ï¿½ï¿½LED */
 } atk_mw579_leden_t;
 
-/* ´ÓÉè±¸¶ÏÁ¬Ë¯ÃßÃ¶¾Ù */
+/* ï¿½ï¿½ï¿½è±¸ï¿½ï¿½ï¿½ï¿½Ë¯ï¿½ï¿½Ã¶ï¿½ï¿½ */
 typedef enum
 {
-    ATK_MW579_SLAVESLEEPEN_ON = 0x00,       /* Ê¹ÄÜ´ÓÉè±¸¶ÏÁ¬Ë¯Ãß */
-    ATK_MW579_SLAVESLEEPEN_OFF,             /* ¹Ø±Õ´ÓÉè±¸¶ÏÁ¬Ë¯Ãß */
+    ATK_MW579_SLAVESLEEPEN_ON = 0x00,       /* Ê¹ï¿½Ü´ï¿½ï¿½è±¸ï¿½ï¿½ï¿½ï¿½Ë¯ï¿½ï¿½ */
+    ATK_MW579_SLAVESLEEPEN_OFF,             /* ï¿½Ø±Õ´ï¿½ï¿½è±¸ï¿½ï¿½ï¿½ï¿½Ë¯ï¿½ï¿½ */
 } atk_mw579_slavesleepen_t;
 
-/* Í¨ÐÅ×î´óÊä³öÃ¶¾Ù */
+/* Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ */
 typedef enum
 {
-    ATK_MW579_MAXPUT_ON = 0x00,             /* Ê¹ÄÜÍ¨ÐÅ×î´óÊä³ö */
-    ATK_MW579_MAXPUT_OFF,                   /* ¹Ø±ÕÍ¨ÐÅ×î´óÊä³ö */
+    ATK_MW579_MAXPUT_ON = 0x00,             /* Ê¹ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+    ATK_MW579_MAXPUT_OFF,                   /* ï¿½Ø±ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 } atk_mw579_maxput_t;
 
-/* ¹¤×÷Ä£Ê½Ã¶¾Ù */
+/* ï¿½ï¿½ï¿½ï¿½Ä£Ê½Ã¶ï¿½ï¿½ */
 typedef enum
 {
-    ATK_MW579_MODE_M = 0x00,                /* Ö÷Éè±¸Ä£Ê½ */
-    ATK_MW579_MODE_S,                       /* ´ÓÉè±¸Ä£Ê½ */
-    ATK_MW579_MODE_O,                       /* ¹Û²ìÕßÄ£Ê½ */
-    ATK_MW579_MODE_B,                       /* ¹ã²¥ÕßÄ£Ê½ */
+    ATK_MW579_MODE_M = 0x00,                /* ï¿½ï¿½ï¿½è±¸Ä£Ê½ */
+    ATK_MW579_MODE_S,                       /* ï¿½ï¿½ï¿½è±¸Ä£Ê½ */
+    ATK_MW579_MODE_O,                       /* ï¿½Û²ï¿½ï¿½ï¿½Ä£Ê½ */
+    ATK_MW579_MODE_B,                       /* ï¿½ã²¥ï¿½ï¿½Ä£Ê½ */
     ATK_MW579_MODE_I,                       /* iBeaconÄ£Ê½ */
 } atk_mw579_mode_t;
 
-/* ×Ô¶¯Ë¯ÃßÃ¶¾Ù */
+/* ï¿½Ô¶ï¿½Ë¯ï¿½ï¿½Ã¶ï¿½ï¿½ */
 typedef enum
 {
-    ATK_MW579_AUTOSLEEPEN_ON = 0x00,        /* Ê¹ÄÜ×Ô¶¯Ë¯Ãß */
-    ATK_MW579_AUTOSLEEPEN_OFF,              /* ¹Ø±Õ×Ô¶¯Ë¯Ãß */
+    ATK_MW579_AUTOSLEEPEN_ON = 0x00,        /* Ê¹ï¿½ï¿½ï¿½Ô¶ï¿½Ë¯ï¿½ï¿½ */
+    ATK_MW579_AUTOSLEEPEN_OFF,              /* ï¿½Ø±ï¿½ï¿½Ô¶ï¿½Ë¯ï¿½ï¿½ */
 } atk_mw579_autosleepen_t;
 
-/* ×Ô¶¯Ë¯ÃßÄ£Ê½Ã¶¾Ù */
+/* ï¿½Ô¶ï¿½Ë¯ï¿½ï¿½Ä£Ê½Ã¶ï¿½ï¿½ */
 typedef enum
 {
-    ATK_MW579_AUTOSLEEP_LOW = 0x00,         /* Ç³Ë¯Ãß */
-    ATK_MW579_AUTOSLEEP_DEEP,               /* Éî¶ÈË¯Ãß */
+    ATK_MW579_AUTOSLEEP_LOW = 0x00,         /* Ç³Ë¯ï¿½ï¿½ */
+    ATK_MW579_AUTOSLEEP_DEEP,               /* ï¿½ï¿½ï¿½Ë¯ï¿½ï¿½ */
 } atk_mw579_autosleep_t;
 
-/* ÉÏµçË¯ÃßÃ¶¾Ù */
+/* ï¿½Ïµï¿½Ë¯ï¿½ï¿½Ã¶ï¿½ï¿½ */
 typedef enum
 {
-    ATK_MW579_POWERSLEEPEN_ON = 0x00,       /* Ê¹ÄÜÉÏµçË¯Ãß */
-    ATK_MW579_POWERSLEEPEN_OFF,             /* ¹Ø±ÕÉÏµçË¯Ãß */
+    ATK_MW579_POWERSLEEPEN_ON = 0x00,       /* Ê¹ï¿½ï¿½ï¿½Ïµï¿½Ë¯ï¿½ï¿½ */
+    ATK_MW579_POWERSLEEPEN_OFF,             /* ï¿½Ø±ï¿½ï¿½Ïµï¿½Ë¯ï¿½ï¿½ */
 } atk_mw579_powersleepen_t;
 
-/* ´íÎó´úÂë */
-#define ATK_MW579_EOK      0                /* Ã»ÓÐ´íÎó */
-#define ATK_MW579_ERROR    1                /* ´íÎó */
-#define ATK_MW579_ETIMEOUT 2                /* ³¬Ê±´íÎó */
-#define ATK_MW579_EINVAL   3                /* ²ÎÊý´íÎó */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+#define ATK_MW579_EOK      0                /* Ã»ï¿½Ð´ï¿½ï¿½ï¿½ */
+#define ATK_MW579_ERROR    1                /* ï¿½ï¿½ï¿½ï¿½ */
+#define ATK_MW579_ETIMEOUT 2                /* ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ */
+#define ATK_MW579_EINVAL   3                /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 
-/* ²Ù×÷º¯Êý */
-uint8_t atk_mw579_init(atk_mw579_uart_baudrate_t baudrate);                                                                                         /* ATK-MW579³õÊ¼»¯ */
-atk_mw579_conn_sta_t atk_mw579_get_conn_sta(void);                                                                                                  /* »ñÈ¡ATK-MW579Á¬½Ó×´Ì¬ */
-uint8_t atk_mw579_send_at_cmd(char *cmd, char *ack, uint32_t timeout);                                                                              /* ATK-MW579·¢ËÍATÖ¸Áî */
-uint8_t atk_mw579_enter_config_mode(void);                                                                                                          /* ATK-MW579½øÈëÅäÖÃÄ£Ê½ */
-uint8_t atk_mw579_at_test(void);                                                                                                                    /* ATK-MW579 ATÖ¸Áî²âÊÔ */
-uint8_t atk_mw579_set_name(char *name);                                                                                                             /* ÉèÖÃATK-MW579À¶ÑÀÃû³Æ */
-uint8_t atk_mw579_set_hello(char *hello);                                                                                                           /* ÉèÖÃATK-MW579¿ª»ú»¶Ó­Óï */
-uint8_t atk_mw579_set_tpl(atk_mw579_tpl_t tpl);                                                                                                     /* ÉèÖÃATK-MW579·¢Éä¹¦ÂÊ */
-uint8_t atk_mw579_set_uart(atk_mw579_uart_baudrate_t baudrate, atk_mw579_uart_data_t data, atk_mw579_uart_pari_t pari, atk_mw579_uart_stop_t stop); /* ÉèÖÃATK-MW579´®¿Ú²ÎÊý */
-uint8_t atk_mw579_set_adptim(uint16_t adptim);                                                                                                      /* ÉèÖÃATK-MW579¹ã²¥ËÙ¶È */
-uint8_t atk_mw579_set_linkpassen(atk_mw579_linkpassen_t linkpassen);                                                                                /* ÉèÖÃATK-MW579Á´Â·Æ¥Åä */
-uint8_t atk_mw579_set_leden(atk_mw579_leden_t leden);                                                                                               /* ÉèÖÃATK-MW579°åÔØLED */
-uint8_t atk_mw579_set_slavesleepen(atk_mw579_slavesleepen_t slavesleepen);                                                                          /* ÉèÖÃATK-MW579´ÓÉè±¸¶ÏÁ¬Ë¯Ãß */
-uint8_t atk_mw579_set_maxput(atk_mw579_maxput_t maxput);                                                                                            /* ÉèÖÃATK-MW579Í¨ÐÅ×î´óÊä³ö */
-uint8_t atk_mw579_set_mode(atk_mw579_mode_t mode);                                                                                                  /* ÉèÖÃATK-MW579¹¤×÷Ä£Ê½ */
-uint8_t atk_mw579_scan_slave(void);                                                                                                                 /* ATK-MW579É¨ÃèÖÜÎ§´ÓÉè±¸ */
-uint8_t atk_mw579_conn_slave(uint8_t id);                                                                                                           /* ATK-MW579Á¬½ÓÖÜÎ§´ÓÉè±¸ */
-uint8_t atk_mw579_enter_unvarnished(void);                                                                                                          /* ATK-MW579½øÈëÍ¸´« */
-uint8_t atk_mw579_set_linkpass(char *pass);                                                                                                         /* ÉèÖÃATK-MW579Á´Â·Æ¥ÅäÃÜÂë */
-uint8_t atk_mw579_set_autosleepen(atk_mw579_autosleepen_t autosleepen, uint8_t autotim);                                                            /* ÉèÖÃATK-MW579×Ô¶¯Ë¯Ãß */
-uint8_t atk_mw579_set_autosleep(atk_mw579_autosleep_t autosleep);                                                                                   /* ÉèÖÃATK-MW579×Ô¶¯Ë¯ÃßÄ£Ê½ */
-uint8_t atk_mw579_set_powersleepen(atk_mw579_powersleepen_t powersleepen);                                                                          /* ÉèÖÃATK-MW579ÉÏµçË¯Ãß */
-uint8_t atk_mw579_set_ibeacon(char *uuid, uint16_t major, uint16_t minor, uint8_t rssi);                                                            /* ÉèÖÃATK-MW579 iBeacon */
-void atk_mw579_wakeup_by_pin(void);                                                                                                                 /* Í¨¹ýWKUPÒý½Å»½ÐÑATK-MW579 */
-void atk_mw579_wakeup_by_uart(void);                                                                                                                /* Í¨¹ýUART»½ÐÑATK-MW579 */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+uint8_t atk_mw579_init(atk_mw579_uart_baudrate_t baudrate);                                                                                         /* ATK-MW579ï¿½ï¿½Ê¼ï¿½ï¿½ */
+atk_mw579_conn_sta_t atk_mw579_get_conn_sta(void);                                                                                                  /* ï¿½ï¿½È¡ATK-MW579ï¿½ï¿½ï¿½ï¿½×´Ì¬ */
+uint8_t atk_mw579_send_at_cmd(char *cmd, char *ack, uint32_t timeout);                                                                              /* ATK-MW579ï¿½ï¿½ï¿½ï¿½ATÖ¸ï¿½ï¿½ */
+uint8_t atk_mw579_enter_config_mode(void);                                                                                                          /* ATK-MW579ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ */
+uint8_t atk_mw579_at_test(void);                                                                                                                    /* ATK-MW579 ATÖ¸ï¿½ï¿½ï¿½ï¿½ï¿½ */
+uint8_t atk_mw579_set_name(char *name);                                                                                                             /* ï¿½ï¿½ï¿½ï¿½ATK-MW579ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+uint8_t atk_mw579_set_hello(char *hello);                                                                                                           /* ï¿½ï¿½ï¿½ï¿½ATK-MW579ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó­ï¿½ï¿½ */
+uint8_t atk_mw579_set_tpl(atk_mw579_tpl_t tpl);                                                                                                     /* ï¿½ï¿½ï¿½ï¿½ATK-MW579ï¿½ï¿½ï¿½ä¹¦ï¿½ï¿½ */
+uint8_t atk_mw579_set_uart(atk_mw579_uart_baudrate_t baudrate, atk_mw579_uart_data_t data, atk_mw579_uart_pari_t pari, atk_mw579_uart_stop_t stop); /* ï¿½ï¿½ï¿½ï¿½ATK-MW579ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ */
+uint8_t atk_mw579_set_adptim(uint16_t adptim);                                                                                                      /* ï¿½ï¿½ï¿½ï¿½ATK-MW579ï¿½ã²¥ï¿½Ù¶ï¿½ */
+uint8_t atk_mw579_set_linkpassen(atk_mw579_linkpassen_t linkpassen);                                                                                /* ï¿½ï¿½ï¿½ï¿½ATK-MW579ï¿½ï¿½Â·Æ¥ï¿½ï¿½ */
+uint8_t atk_mw579_set_leden(atk_mw579_leden_t leden);                                                                                               /* ï¿½ï¿½ï¿½ï¿½ATK-MW579ï¿½ï¿½ï¿½ï¿½LED */
+uint8_t atk_mw579_set_slavesleepen(atk_mw579_slavesleepen_t slavesleepen);                                                                          /* ï¿½ï¿½ï¿½ï¿½ATK-MW579ï¿½ï¿½ï¿½è±¸ï¿½ï¿½ï¿½ï¿½Ë¯ï¿½ï¿½ */
+uint8_t atk_mw579_set_maxput(atk_mw579_maxput_t maxput);                                                                                            /* ï¿½ï¿½ï¿½ï¿½ATK-MW579Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+uint8_t atk_mw579_set_mode(atk_mw579_mode_t mode);                                                                                                  /* ï¿½ï¿½ï¿½ï¿½ATK-MW579ï¿½ï¿½ï¿½ï¿½Ä£Ê½ */
+uint8_t atk_mw579_scan_slave(void);                                                                                                                 /* ATK-MW579É¨ï¿½ï¿½ï¿½ï¿½Î§ï¿½ï¿½ï¿½è±¸ */
+uint8_t atk_mw579_connadd_slave(char id[13]);                                                                                                           /* ATK-MW579ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î§ï¿½ï¿½ï¿½è±¸ */
+uint8_t atk_mw579_enter_unvarnished(void);                                                                                                          /* ATK-MW579ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ï¿½ */
+uint8_t atk_mw579_set_linkpass(char *pass);                                                                                                         /* ï¿½ï¿½ï¿½ï¿½ATK-MW579ï¿½ï¿½Â·Æ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+uint8_t atk_mw579_set_autosleepen(atk_mw579_autosleepen_t autosleepen, uint8_t autotim);                                                            /* ï¿½ï¿½ï¿½ï¿½ATK-MW579ï¿½Ô¶ï¿½Ë¯ï¿½ï¿½ */
+uint8_t atk_mw579_set_autosleep(atk_mw579_autosleep_t autosleep);                                                                                   /* ï¿½ï¿½ï¿½ï¿½ATK-MW579ï¿½Ô¶ï¿½Ë¯ï¿½ï¿½Ä£Ê½ */
+uint8_t atk_mw579_set_powersleepen(atk_mw579_powersleepen_t powersleepen);                                                                          /* ï¿½ï¿½ï¿½ï¿½ATK-MW579ï¿½Ïµï¿½Ë¯ï¿½ï¿½ */
+uint8_t atk_mw579_set_ibeacon(char *uuid, uint16_t major, uint16_t minor, uint8_t rssi);                                                            /* ï¿½ï¿½ï¿½ï¿½ATK-MW579 iBeacon */
+void atk_mw579_wakeup_by_pin(void);                                                                                                                 /* Í¨ï¿½ï¿½WKUPï¿½ï¿½ï¿½Å»ï¿½ï¿½ï¿½ATK-MW579 */
+void atk_mw579_wakeup_by_uart(void);                                                                                                                /* Í¨ï¿½ï¿½UARTï¿½ï¿½ï¿½ï¿½ATK-MW579 */
 
 #endif

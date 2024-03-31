@@ -23,7 +23,11 @@ void atk_mw579_play(void)
     if (ret != 0)
     {
         printf("ATK-MW579-MASTER init failed!\r\n");
-        return;
+        // return;
+    }
+    else
+    {
+        printf("ATK-MW579-MASTER init success!\r\n");
     }
 
     /* 配置ATK-MW579-MASTER */
@@ -42,12 +46,24 @@ void atk_mw579_play(void)
     {
         printf("ATK-MW579-MASTER config failed!\r\n");
     }
+    else
+    {
+        printf("ATK-MW579-MASTER config success!\r\n");
+    }
 
     /* 重新进入配置模式 */
     atk_mw579_enter_config_mode();
 
     /* 扫描周围从设备 */
-    atk_mw579_scan_slave();
+    if (atk_mw579_scan_slave() == 0)
+    {
+        printf("ATK-MW579-MASTER scan success!\r\n");
+    }
+    else
+    {
+        printf("ATK-MW579-MASTER scan failed!\r\n");
+    }
+    
     delay_ms(1000);
 
     /* 将扫描到的设备发送至串口调试器 */
@@ -58,17 +74,19 @@ void atk_mw579_play(void)
         printf("Enter number to connect: \r\n");
     }
 
-    /* 根据从设备编号连接从设备 */
-    printf("Connect to number %u\r\n", ATK_MW579_SLAVE_ID);
-    if (atk_mw579_conn_slave(ATK_MW579_SLAVE_ID) == ATK_MW579_ERROR)
-    {
-        printf("ATK-MW579-SLAVE connect failed!\r\n");
-        return;
-    }
-    else
-    {
-        printf("ATK-MW579-SLAVE connect success!\r\n");
-    }
+    /* 根据从设备MAC地址连接从设备 */
+    printf("Connect to number %s\r\n", (char *)ATK_MW579_SLAVE_MAC);
+    atk_mw579_connadd_slave("383B263631E5");
+    // uint8_t isConn = atk_mw579_connadd_slave(ATK_MW579_SLAVE_MAC);
+    // if (isConn == ATK_MW579_ERROR)
+    // {
+    //     printf("ATK-MW579-SLAVE connect failed!\r\n");
+    //     return;
+    // }
+    // else
+    // {
+    //     printf("ATK-MW579-SLAVE connect success!\r\n");
+    // }
 
 
     /* 等待从设备连接后，进入透传 */
