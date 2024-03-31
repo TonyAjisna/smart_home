@@ -26,5 +26,6 @@ del *.sct /s
 del *.map /s
 
 del *.dbgconf /s
-del *.uvguix.* /s
+del *.LINGZHUNING /s
+del *.Administrator /s
 exit
