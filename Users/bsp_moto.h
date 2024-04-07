@@ -14,13 +14,15 @@
 #define GPIO_MOTO_CLK_ENABLE()      do{ __HAL_RCC_GPIOA_CLK_ENABLE(); }while(0)   /* 发送引脚时钟使能 */
 
  
-#define IN1(a)\
-    if(a)   GPIO_SetBits(GPIO_MOTO_PORT, GPIO_MOTO_Pin_IN1);\
-    else    GPIO_ResetBits(GPIO_MOTO_PORT, GPIO_MOTO_Pin_IN1);
+#define IN1(x)   do{ x ? \
+                      HAL_GPIO_WritePin(GPIO_MOTO_PORT, GPIO_MOTO_Pin_IN1, GPIO_PIN_SET) : \
+                      HAL_GPIO_WritePin(GPIO_MOTO_PORT, GPIO_MOTO_Pin_IN1, GPIO_PIN_RESET); \
+                  }while(0)     //拉低引脚
      
-#define IN2(a)\
-    if(a)   GPIO_SetBits(GPIO_MOTO_PORT, GPIO_MOTO_Pin_IN2);\
-    else    GPIO_ResetBits(GPIO_MOTO_PORT, GPIO_MOTO_Pin_IN2);
+#define IN2(x)   do{ x ? \
+                      HAL_GPIO_WritePin(GPIO_MOTO_PORT, GPIO_MOTO_Pin_IN2, GPIO_PIN_SET) : \
+                      HAL_GPIO_WritePin(GPIO_MOTO_PORT, GPIO_MOTO_Pin_IN2, GPIO_PIN_RESET); \
+                  }while(0)     //拉低引脚
      
  
 /*GPIO端口初始化*/

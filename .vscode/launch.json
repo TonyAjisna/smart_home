@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/zhaobw/Desktop/smart_doorlock/Users",
-      "program": "c:/Users/zhaobw/Desktop/smart_doorlock/Users/build/Debug/outDebug",
+      "cwd": "c:/Users/Zhaobw/Desktop/Projects/smart_doorlock/Drivers/SYSTEM/sys",
+      "program": "c:/Users/Zhaobw/Desktop/Projects/smart_doorlock/Drivers/SYSTEM/sys/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

@@ -20,7 +20,8 @@ void GPIO_Moto_Init(void)
     // 初始化
     HAL_GPIO_Init(GPIO_MOTO_PORT, &GPIO_InitStruct);
      
-    GPIO_ResetBits(GPIO_MOTO_PORT, GPIO_MOTO_Pin_IN1|GPIO_MOTO_Pin_IN2);
+    // GPIO_ResetBits(GPIO_MOTO_PORT, GPIO_MOTO_Pin_IN1|GPIO_MOTO_Pin_IN2);
+    HAL_GPIO_WritePin(GPIO_MOTO_PORT, GPIO_MOTO_Pin_IN1|GPIO_MOTO_Pin_IN2, GPIO_PIN_RESET);
 }
  
 /*Moto1正转*/
