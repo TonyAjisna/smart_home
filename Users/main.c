@@ -37,16 +37,18 @@ int main(void)
         key = key_scan(0);
         switch (key)
         {
-            case KEY0_PRES:                                     /* KEY0被按下 */
+            case KEY0_PRES:                                     /* KEY0�?按下 */
             {
-                Moto1_Forward();                                  /* LED0状态翻转 */
-                delay_ms(1000);
+                Moto1_Forward();                                  /* LED0状态翻�? */
+				LED0(0);
+                delay_ms(100);
                 break;
             }
-            case WKUP_PRES:                                     /* KEY_UP被按下 */
+            case WKUP_PRES:                                     /* KEY_UP�?按下 */
             {
-                Moto1_Reverse();                                  /* LED1状态翻转 */
-                delay_ms(1000);
+                Moto1_Reverse();                                  /* LED1状态翻�? */
+                LED0(1);
+                delay_ms(100);
                 break;
             }
             default:
