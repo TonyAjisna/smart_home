@@ -21,7 +21,8 @@
 #include "./SYSTEM/usart/usart.h"
 #include "./SYSTEM/delay/delay.h"
 #include "./BSP/LED/led.h"
-
+#include "./BSP/HY-SRF05/hy_srf05.h"
+#include "./BSP/TIM/gtim.h"
 
 int main(void)
 {
@@ -30,7 +31,7 @@ int main(void)
     delay_init(72);                                         /* 延时初始化 */
     usart_init(115200);                                     /* 初始化串口 */
     led_init();                                             /* 初始化LED */
-    
+    gtim_timx_init(10000 - 1, 7200 - 1);                    /* 1Khz的计数频率，计数1K次为1s */
     
     while (1)
     {

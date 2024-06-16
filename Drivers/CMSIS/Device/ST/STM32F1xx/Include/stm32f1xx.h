@@ -109,6 +109,8 @@
   * @{
   */
 
+ #include "stm32f1xx_hal_gpio.h"
+
 #if defined(STM32F100xB)
   #include "stm32f100xb.h"
 #elif defined(STM32F100xE)
