@@ -1,35 +1,42 @@
-//=============================================================================
-//文件名称:led.h
-//文件概要:LED初始化
-//库版本：V3.5.0
-//版权所有:源地工作室 http://www.vcc-gnd.com/  网店 http://vcc-gnd.taobao.com/
-//版本更新:2013-10-09 V1.0
-//=============================================================================
+/**
+ ****************************************************************************************************
+ * @file        led.c
+ * @author      正点原子团队(ALIENTEK)
+ * @version     V1.0
+ * @date        2023-08-01
+ * @brief       LED 驱动代码
+ * @license     Copyright (c) 2020-2032, 广州市星翼电子科技有限公司
+ ****************************************************************************************************
+ * @attention
+ *
+ * 实验平台:正点原子 M48Z-M3最小系统板STM32F103版
+ * 在线视频:www.yuanzige.com
+ * 技术论坛:www.openedv.com
+ * 公司网址:www.alientek.com
+ * 购买地址:openedv.taobao.com
+ *
+ ****************************************************************************************************
+ */
+
+#include "./BSP/LED/led.h"
 
 
-//头文件
-#include "led.h"
+/**
+ * @brief       初始化LED相关IO口, 并使能时钟
+ * @param       无
+ * @retval      无
+ */
+void led_init(void)
+{
+    GPIO_InitTypeDef gpio_init_struct;
+    LED0_GPIO_CLK_ENABLE();                                 /* LED0时钟使能 */
 
+    gpio_init_struct.Pin = LED0_GPIO_PIN;                   /* LED0引脚 */
+    gpio_init_struct.Mode = GPIO_MODE_OUTPUT_PP;            /* 推挽输出 */
+    gpio_init_struct.Pull = GPIO_PULLUP;                    /* 上拉 */
+    
+    gpio_init_struct.Speed = GPIO_SPEED_FREQ_HIGH;          /* 高速 */
+    HAL_GPIO_Init(LED0_GPIO_PORT, &gpio_init_struct);       /* 初始化LED0引脚 */
 
-//=============================================================================
-//函数名称: LED_GPIO_Config(void)
-//功能概要:LED灯引脚配置
-//参数名称:无
-//函数返回:无
-//=============================================================================
-void LED_GPIO_Config(void)
-{	
-	//定义一个GPIO_InitTypeDef 类型的结构体，名字叫GPIO_InitStructure 
-	GPIO_InitTypeDef  GPIO_InitStructure;
-	//使能GPIOC的外设时钟
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC,ENABLE);
-	//选择要用的GPIO引脚		
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_13;
-	///设置引脚模式为推免输出模式			 
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 		 
-	//设置引脚速度为50MHZ
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	//调用库函数，初始化GPIO
-	GPIO_Init(GPIOC, &GPIO_InitStructure);
+    LED0(1);                                                /* 关闭 LED0 */
 }
-
