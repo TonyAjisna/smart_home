@@ -61,6 +61,8 @@
     "stm32f10x.h": "c",
     "hy_srf05.h": "c",
     "sys.h": "c",
-    "stm32f1xx.h": "c"
+    "stm32f1xx.h": "c",
+    "mu_6050.h": "c",
+    "delay.h": "c"
   }
 }

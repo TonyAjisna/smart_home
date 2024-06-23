@@ -4,7 +4,7 @@
 #include "./SYSTEM/sys/sys.h"
 #include "./SYSTEM/delay/delay.h"
 
-/* 首先定义tx和rx引脚 */
+/* 棣栧厛瀹氫箟tx鍜宺x寮曡剼 */
 #define ECHO_PORT           GPIOA
 #define ECHO_PIN            GPIO_PIN_7
 
@@ -13,12 +13,12 @@
 
 #define HY_SRF05_CLK_ENABLE()   do{ _HAL_RCC_GPIOA_CLK_ENABLE(); }while(0)
 
-/* IO操作函数 */
+/* IO鎿嶄綔鍑芥暟 */
 #define TRIG_OUT(x)     do{ x ? \
                                 HAL_GPIO_WritePin(DHT11_DQ_GPIO_PORT, DHT11_DQ_GPIO_PIN, GPIO_PIN_SET) : \
                                 HAL_GPIO_WritePin(DHT11_DQ_GPIO_PORT, DHT11_DQ_GPIO_PIN, GPIO_PIN_RESET); \
                             }while(0)  
-#define ECHO_IN         HAL_GPIO_ReadPin(DHT11_DQ_GPIO_PORT, DHT11_DQ_GPIO_PIN)         /* 数据端口输入 */
+#define ECHO_IN         HAL_GPIO_ReadPin(DHT11_DQ_GPIO_PORT, DHT11_DQ_GPIO_PIN)         /* 鏁版嵁绔彛杈撳叆 */
 
 
  
