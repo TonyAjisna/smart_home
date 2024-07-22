@@ -20,8 +20,9 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f1xx_it.h"
 #include "stm32f1xx_hal.h"
+#include "stm32f1xx_it.h"
+#include "./SYSTEM/sys/sys.h"
    
 /** @addtogroup STM32F1xx_HAL_Examples
   * @{
@@ -121,6 +122,7 @@ void SVC_Handler(void)
 void DebugMon_Handler(void)
 {
 }
+#if (!SYS_SUPPORT_OS)
 
 /**
   * @brief  This function handles PendSVC exception.
@@ -140,6 +142,7 @@ void SysTick_Handler(void)
 {
   HAL_IncTick();
 }
+#endif
 
 /******************************************************************************/
 /*                 STM32F1xx Peripherals Interrupt Handlers                   */

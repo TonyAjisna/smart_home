@@ -3,28 +3,32 @@
  * @file        usart.c
  * @author      正点原子团队(ALIENTEK)
  * @version     V1.0
- * @date        2023-08-01
+ * @date        2020-04-20
  * @brief       串口初始化代码(一般是串口1)，支持printf
  * @license     Copyright (c) 2020-2032, 广州市星翼电子科技有限公司
  ****************************************************************************************************
  * @attention
  *
- * 实验平台:正点原子 M48Z-M3最小系统板STM32F103版
+ * 实验平台:正点原子 STM32F103开发板
  * 在线视频:www.yuanzige.com
  * 技术论坛:www.openedv.com
  * 公司网址:www.alientek.com
  * 购买地址:openedv.taobao.com
+ *
+ * 修改说明
+ * V1.0 20211103
+ * 第一次发布
  *
  ****************************************************************************************************
  */
 
 #include "./SYSTEM/sys/sys.h"
 #include "./SYSTEM/usart/usart.h"
-
+#include "./BSP/ATK_MW579/atk_mw579.h"
 
 /* 如果使用os,则包括下面的头文件即可. */
 #if SYS_SUPPORT_OS
-#include "os.h" /* os 使用 */
+#include "includes.h" /* os 使用 */
 #endif
 
 /******************************************************************************************/
@@ -153,6 +157,30 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
         HAL_NVIC_EnableIRQ(USART_UX_IRQn);                      /* 使能USART1中断通道 */
         HAL_NVIC_SetPriority(USART_UX_IRQn, 3, 3);              /* 组2，最低优先级:抢占优先级3，子优先级3 */
 #endif
+    }
+    else if (huart->Instance == ATK_MW579_UART_INTERFACE)               /* 如果是ATK-MW579 UART */
+    {
+        ATK_MW579_UART_TX_GPIO_CLK_ENABLE();                            /* 使能UART TX引脚时钟 */
+        ATK_MW579_UART_RX_GPIO_CLK_ENABLE();                            /* 使能UART RX引脚时钟 */
+        ATK_MW579_UART_CLK_ENABLE();                                    /* 使能UART时钟 */
+        
+        gpio_init_struct.Pin    = ATK_MW579_UART_TX_GPIO_PIN;           /* UART TX引脚 */
+        gpio_init_struct.Mode   = GPIO_MODE_AF_PP;                      /* 复用推挽输出 */
+        gpio_init_struct.Pull   = GPIO_NOPULL;                          /* 无上下拉 */
+        gpio_init_struct.Speed  = GPIO_SPEED_FREQ_HIGH;                 /* 高速 */
+        HAL_GPIO_Init(ATK_MW579_UART_TX_GPIO_PORT, &gpio_init_struct);  /* 初始化UART TX引脚 */
+        
+        gpio_init_struct.Pin    = ATK_MW579_UART_RX_GPIO_PIN;           /* UART RX引脚 */
+        gpio_init_struct.Mode   = GPIO_MODE_INPUT;                      /* 输入 */
+        gpio_init_struct.Pull   = GPIO_NOPULL;                          /* 无上下拉 */
+        gpio_init_struct.Speed  = GPIO_SPEED_FREQ_HIGH;                 /* 高速 */
+        HAL_GPIO_Init(ATK_MW579_UART_RX_GPIO_PORT, &gpio_init_struct);  /* 初始化UART RX引脚 */
+        
+        HAL_NVIC_SetPriority(ATK_MW579_UART_IRQn, 0, 0);                /* 抢占优先级0，子优先级0 */
+        HAL_NVIC_EnableIRQ(ATK_MW579_UART_IRQn);                        /* 使能UART中断通道 */
+        
+        __HAL_UART_ENABLE_IT(huart, UART_IT_RXNE);                      /* 使能UART接收中断 */
+        __HAL_UART_ENABLE_IT(huart, UART_IT_IDLE);                      /* 使能UART总线空闲中断 */
     }
 }
 

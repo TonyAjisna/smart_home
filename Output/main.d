@@ -1,4 +1,4 @@
-..\..\output\main.o: ..\..\Users\main.c
+..\..\output\main.o: ..\..\User\main.c
 ..\..\output\main.o: ..\..\Drivers\./SYSTEM/sys/sys.h
 ..\..\output\main.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
 ..\..\output\main.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xe.h
@@ -9,7 +9,7 @@
 ..\..\output\main.o: ..\..\Drivers\CMSIS\Include\cmsis_armcc.h
 ..\..\output\main.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\system_stm32f1xx.h
 ..\..\output\main.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h
-..\..\output\main.o: ..\..\Users\stm32f1xx_hal_conf.h
+..\..\output\main.o: ..\..\User\stm32f1xx_hal_conf.h
 ..\..\output\main.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h
 ..\..\output\main.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h
 ..\..\output\main.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
@@ -58,7 +58,11 @@
 ..\..\output\main.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pcd_ex.h
 ..\..\output\main.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_hcd.h
 ..\..\output\main.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_mmc.h
+..\..\output\main.o: ..\..\Drivers\./SYSTEM/delay/delay.h
 ..\..\output\main.o: ..\..\Drivers\./SYSTEM/usart/usart.h
 ..\..\output\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-..\..\output\main.o: ..\..\Drivers\./SYSTEM/delay/delay.h
 ..\..\output\main.o: ..\..\Drivers\./BSP/LED/led.h
+..\..\output\main.o: ..\..\Drivers\./BSP/KEY/key.h
+..\..\output\main.o: ..\..\Drivers\./BSP/LCD/lcd.h
+..\..\output\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\..\output\main.o: ..\..\User\demo.h

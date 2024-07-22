@@ -10,7 +10,7 @@
 ..\..\output\led.o: ..\..\Drivers\CMSIS\Include\cmsis_armcc.h
 ..\..\output\led.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\system_stm32f1xx.h
 ..\..\output\led.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h
-..\..\output\led.o: ..\..\Users\stm32f1xx_hal_conf.h
+..\..\output\led.o: ..\..\User\stm32f1xx_hal_conf.h
 ..\..\output\led.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h
 ..\..\output\led.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h
 ..\..\output\led.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h

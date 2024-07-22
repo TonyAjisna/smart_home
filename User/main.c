@@ -1,43 +1,45 @@
 /**
- ******************************************************************************
- * @file     main.c
- * @author   正点原子团队(ALIENTEK)
- * @version  V1.0
- * @date     2023-08-01
- * @brief    跑马灯实验
- * @license  Copyright (c) 2020-2032, 广州市星翼电子科技有限公司
- ******************************************************************************
+ ****************************************************************************************************
+ * @file        main.c
+ * @author      正点原子团队(ALIENTEK)
+ * @version     V1.0
+ * @date        2022-06-21
+ * @brief       ATK-MW579模块iBeacon模式测试实验
+ * @license     Copyright (c) 2020-2032, 广州市星翼电子科技有限公司
+ ****************************************************************************************************
  * @attention
- * 
- * 实验平台:正点原子 M48Z-M3最小系统板STM32F103版
+ *
+ * 实验平台:正点原子 MiniSTM32 V4开发板
  * 在线视频:www.yuanzige.com
  * 技术论坛:www.openedv.com
  * 公司网址:www.alientek.com
  * 购买地址:openedv.taobao.com
- ******************************************************************************
+ *
+ ****************************************************************************************************
  */
 
 #include "./SYSTEM/sys/sys.h"
-#include "./SYSTEM/usart/usart.h"
 #include "./SYSTEM/delay/delay.h"
+#include "./SYSTEM/usart/usart.h"
 #include "./BSP/LED/led.h"
-#include "./BSP/HY-SRF05/hy_srf05.h"
-#include "./BSP/TIM/gtim.h"
+#include "./BSP/KEY/key.h"
+#include "./BSP/LCD/lcd.h"
+#include "demo.h"
+
 
 int main(void)
 {
-    HAL_Init();                                             /* 初始化HAL库 */
-    sys_stm32_clock_init(RCC_PLL_MUL9);                     /* 设置时钟, 72Mhz */
-    delay_init(72);                                         /* 延时初始化 */
-    usart_init(115200);                                     /* 初始化串口 */
-    led_init();                                             /* 初始化LED */
-    gtim_timx_init(10000 - 1, 7200 - 1);                    /* 1Khz的计数频率，计数1K次为1s */
+    HAL_Init();                                             /* ???HAL? */
+    sys_stm32_clock_init(RCC_PLL_MUL9);                     /* ????, 72Mhz */
+    delay_init(72);                                         /* ????? */
+    usart_init(115200);                                     /* ????? */
+    led_init();                                             /* ???LED */
     
     while (1)
     {
-        LED0(0);                                            /* LED0亮 */
+        LED0(0);                                            /* LED0? */
         delay_ms(500);
-        LED0(1);                                            /* LED0灭 */
+        LED0(1);                                            /* LED0? */
         delay_ms(500);
     }
 }

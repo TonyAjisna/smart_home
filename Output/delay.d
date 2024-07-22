@@ -9,7 +9,7 @@
 ..\..\output\delay.o: ..\..\Drivers\CMSIS\Include\cmsis_armcc.h
 ..\..\output\delay.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\system_stm32f1xx.h
 ..\..\output\delay.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h
-..\..\output\delay.o: ..\..\Users\stm32f1xx_hal_conf.h
+..\..\output\delay.o: ..\..\User\stm32f1xx_hal_conf.h
 ..\..\output\delay.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h
 ..\..\output\delay.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h
 ..\..\output\delay.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
