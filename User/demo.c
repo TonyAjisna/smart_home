@@ -1,47 +1,27 @@
-/**
- ****************************************************************************************************
- * @file        demo.c
- * @author      ÕıµãÔ­×ÓÍÅ¶Ó(ALIENTEK)
- * @version     V1.0
- * @date        2022-06-21
- * @brief       ATK-MW579Ä£¿éiBeaconÄ£Ê½²âÊÔÊµÑé
- * @license     Copyright (c) 2020-2032, ¹ãÖİÊĞĞÇÒíµç×Ó¿Æ¼¼ÓĞÏŞ¹«Ë¾
- ****************************************************************************************************
- * @attention
- *
- * ÊµÑéÆ½Ì¨:ÕıµãÔ­×Ó MiniSTM32 V4¿ª·¢°å
- * ÔÚÏßÊÓÆµ:www.yuanzige.com
- * ¼¼ÊõÂÛÌ³:www.openedv.com
- * ¹«Ë¾ÍøÖ·:www.alientek.com
- * ¹ºÂòµØÖ·:openedv.taobao.com
- *
- ****************************************************************************************************
- */
-
 #include "demo.h"
 #include "./BSP/ATK_MW579/atk_mw579.h"
 #include "./BSP/LED/led.h"
 #include "./SYSTEM/usart/usart.h"
 #include "./SYSTEM/delay/delay.h"
 
-#define DEMO_BLE_NAME           "ATK-MW579"                         /* À¶ÑÀÃû³Æ */
-#define DEMO_BLE_HELLO          "HELLO ATK-MW579"                   /* ¿ª»ú»¶Ó­Óï */
-#define DEMO_BLE_ADPTIM         2                                   /* ¹ã²¥ËÙ¶È */
-#define DEMO_BLE_IBEACON_UUID   "00000000000000000000000000000000"  /* ±êÊ¶·û */
-#define DEMO_BLE_IBEACON_MAJOR  20                                  /* Ö÷±êÊ¶ */
-#define DEMO_BLE_IBEACON_MINOR  20                                  /* ´Î±êÊ¶ */
-#define DEMO_BLE_IBEACON_RSSI   200                                 /* ¾àÀëÒ»Ã×Ê±µÄĞÅºÅÇ¿¶È */
+#define DEMO_BLE_NAME           "ATK-MW579"                         /* è“ç‰™åç§° */
+#define DEMO_BLE_HELLO          "HELLO ATK-MW579"                   /* å¼€æœºæ¬¢è¿è¯­ */
+#define DEMO_BLE_ADPTIM         2                                   /* å¹¿æ’­é€Ÿåº¦ */
+#define DEMO_BLE_IBEACON_UUID   "00000000000000000000000000000000"  /* æ ‡è¯†ç¬¦ */
+#define DEMO_BLE_IBEACON_MAJOR  20                                  /* ä¸»æ ‡è¯† */
+#define DEMO_BLE_IBEACON_MINOR  20                                  /* æ¬¡æ ‡è¯† */
+#define DEMO_BLE_IBEACON_RSSI   200                                 /* è·ç¦»ä¸€ç±³æ—¶çš„ä¿¡å·å¼ºåº¦ */
 
 /**
- * @brief       Àı³ÌÑİÊ¾Èë¿Úº¯Êı
- * @param       ÎŞ
- * @retval      ÎŞ
+ * @brief       ä¾‹ç¨‹æ¼”ç¤ºå…¥å£å‡½æ•°
+ * @param       æ— 
+ * @retval      æ— 
  */
 void demo_run(void)
 {
     uint8_t ret;
     
-    /* ATK-MW579³õÊ¼»¯ */
+    /* ATK-MW579åˆå§‹åŒ– */
     ret = atk_mw579_init(ATK_MW579_UART_BAUDRATE_115200);
     if (ret != 0)
     {
@@ -53,7 +33,7 @@ void demo_run(void)
         }
     }
     
-    /* ÅäÖÃATK-MW579 */
+    /* é…ç½®ATK-MW579 */
     atk_mw579_enter_config_mode();
     ret  = atk_mw579_set_name(DEMO_BLE_NAME);
     ret += atk_mw579_set_hello(DEMO_BLE_HELLO);
