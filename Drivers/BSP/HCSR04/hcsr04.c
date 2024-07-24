@@ -29,3 +29,29 @@ uint16_t sonar_mm(void)
 	}
 	return Distance_mm;						//返回测距结果
 }
+
+
+/* 测距并返回单位为m的距离结果 */
+uint16_t sonar(void)
+{
+    uint32_t Distance, Distance_mm = 0;
+    float Distance_m=0;
+    TRIG_OUT(1);                            //输出高电平
+    delay_us(15);                           //延时15μs
+    TRIG_OUT(0);                            //输出低电平
+    while (ECHO_IN == 0);                   //等待低电平结束
+    time=0;                                 //计时清零
+    while (ECHO_IN == 1);                   //等待高电平
+    time_end =  time;                       //记录结束时的时间
+	if(time_end/100<38)						//判断是否小于38毫秒，大于38毫秒的就是超时，直接调到下面返回0
+	if(time_end/100<38)
+	{
+		Distance=(time_end*346)/2;
+		Distance_mm=Distance/100;
+		Distance_m=Distance_mm/1000;
+	}
+	return Distance_m;						//返回测距结果
+}
+
+
+/* 这里需要添加一个计时中断，更新time的值 */
