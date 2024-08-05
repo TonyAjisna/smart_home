@@ -64,6 +64,9 @@
     "stm32f1xx.h": "c",
     "mu_6050.h": "c",
     "delay.h": "c",
-    "demo.h": "c"
+    "demo.h": "c",
+    "ole.h": "c",
+    "oledfont.h": "c",
+    "oled.h": "c"
   }
 }
