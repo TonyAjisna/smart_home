@@ -67,6 +67,9 @@
     "demo.h": "c",
     "ole.h": "c",
     "oledfont.h": "c",
-    "oled.h": "c"
+    "oled.h": "c",
+    "common.h": "c",
+    "i2c.h": "c",
+    "stm32f1xx_hal_i2c.h": "c"
   }
 }
