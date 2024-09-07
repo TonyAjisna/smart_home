@@ -60,6 +60,7 @@
 ..\..\output\demo.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pcd_ex.h
 ..\..\output\demo.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_hcd.h
 ..\..\output\demo.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_mmc.h
+..\..\output\demo.o: ..\..\User\Common\Typedef.h
 ..\..\output\demo.o: ..\..\Drivers\./BSP/ATK_MW579/atk_mw579_uart.h
 ..\..\output\demo.o: ..\..\Drivers\./BSP/LED/led.h
 ..\..\output\demo.o: ..\..\Drivers\./SYSTEM/usart/usart.h

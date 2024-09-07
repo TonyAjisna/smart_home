@@ -1,4 +1,5 @@
 #include "hcsr04.h"
+#include "./SYSTEM/delay/delay.h"
 
 uint64_t time = 0;      //声明变量，用来计时
 uint64_t time_end = 0;  //声明变量，存储回波信号时间 
@@ -7,7 +8,21 @@ uint64_t time_end = 0;  //声明变量，存储回波信号时间
 /* ECHO_PIN和TRIG_PIN设置 */
 void HC_SR04_Init(void)
 {
-    
+    GPIO_InitTypeDef gpio_init_struct;
+    HY_SRF05_CLK_ENABLE();
+
+    gpio_init_struct.Pin = TRIG_PIN;    //TRIG
+    gpio_init_struct.Mode = GPIO_MODE_OUTPUT_PP;
+    gpio_init_struct.Speed = GPIO_SPEED_FREQ_HIGH;		//设置GPIO口速度50Mhz
+    HAL_GPIO_Init(TRIG_PORT, &gpio_init_struct);
+    delay_us(15);       //延时15us
+
+    gpio_init_struct.Pin = ECHO_PIN;  //ECHO
+    gpio_init_struct.Mode = GPIO_MODE_INPUT;
+    gpio_init_struct.Speed = GPIO_SPEED_FREQ_HIGH;		//设置GPIO口速度50Mhz
+    gpio_init_struct.Pull = GPIO_PULLDOWN;		//下拉输入模式
+    HAL_GPIO_Init(ECHO_PORT, &gpio_init_struct);
+    HAL_GPIO_WritePin(GPIOA, ECHO_PIN, GPIO_PIN_RESET); //输出低电平
 }
 
 
@@ -32,7 +47,7 @@ uint16_t sonar_mm(void)
 
 
 /* 测距并返回单位为m的距离结果 */
-uint16_t sonar(void)
+float sonar(void)
 {
     uint32_t Distance, Distance_mm = 0;
     float Distance_m=0;
@@ -55,3 +70,7 @@ uint16_t sonar(void)
 
 
 /* 这里需要添加一个计时中断，更新time的值 */
+void TIM_IRQHandler(void)			//更新中断函数，用来计时，每10微秒变量time加1
+{
+		time++;
+}

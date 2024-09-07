@@ -26,6 +26,8 @@
 #define __SYS_H
 
 #include "stm32f1xx.h"
+#include "stm32f1xx_hal_gpio.h"
+#include "stm32f1xx_hal_rcc.h"
 #include "Typedef.h"
 
 

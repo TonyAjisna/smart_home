@@ -1,5 +1,7 @@
 #include "./BSP/TIM/gtim.h"
 #include "./BSP/LED/led.h"
+#include "./BSP/TIM/gtim.h"
+#include <stdbool.h>
 
 
 TIM_HandleTypeDef g_timx_handle;  /* 定时器x句柄 */
@@ -37,22 +39,22 @@ void gtim_timx_init(uint16_t arr, uint16_t psc)
  * @param       无
  * @retval      无
  */
-extern uint16_t msHcCount;
-extern bool msHcCount_EN;
+// extern uint16_t msHcCount;
+// extern bool msHcCount_EN;
 void GTIM_TIMX_INT_IRQHandler(void)
 {
     /* 以下代码没有使用定时器HAL库共用处理函数来处理，而是直接通过判断中断标志位的方式 */
     if(__HAL_TIM_GET_FLAG(&g_timx_handle, TIM_FLAG_UPDATE) != RESET)
     {
-        LED0_TOGGLE();
+        TIM_IRQHandler();
         __HAL_TIM_CLEAR_IT(&g_timx_handle, TIM_IT_UPDATE);      /* 清除定时器溢出中断标志位 */
-        if (msHcCount_EN)
-        {
-            msHcCount++;
-        }
-        else
-        {
+        // if (msHcCount_EN)
+        // {
+        //     msHcCount++;
+        // }
+        // else
+        // {
             
-        }
+        // }
     }
 }

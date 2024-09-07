@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xE</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include;..\..\Drivers\STM32F1xx_HAL_Driver\Inc;..\..\Drivers\CMSIS\Include;..\..\Drivers\;..\..\User;..\..\Middlewares</IncludePath>
+              <IncludePath>..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include;..\..\Drivers\STM32F1xx_HAL_Driver\Inc;..\..\Drivers\CMSIS\Include;..\..\Drivers\;..\..\User;..\..\Middlewares;..\..\User\Common;..\..\Drivers\BSP\HCSR04;..\..\Drivers\BSP\TIM</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -412,6 +412,11 @@
               <FileName>demo.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\demo.c</FilePath>
+            </File>
+            <File>
+              <FileName>common.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\Common\common.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -527,6 +532,16 @@
               <FileName>atk_mw579_uart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Drivers\BSP\ATK_MW579\atk_mw579_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>hcsr04.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Drivers\BSP\HCSR04\hcsr04.c</FilePath>
+            </File>
+            <File>
+              <FileName>gtim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Drivers\BSP\TIM\gtim.c</FilePath>
             </File>
           </Files>
         </Group>

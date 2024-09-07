@@ -59,6 +59,7 @@
 ..\..\output\atk_mw579_uart.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pcd_ex.h
 ..\..\output\atk_mw579_uart.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_hcd.h
 ..\..\output\atk_mw579_uart.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_mmc.h
+..\..\output\atk_mw579_uart.o: ..\..\User\Common\Typedef.h
 ..\..\output\atk_mw579_uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 ..\..\output\atk_mw579_uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\..\output\atk_mw579_uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

@@ -59,4 +59,5 @@
 ..\..\output\key.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pcd_ex.h
 ..\..\output\key.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_hcd.h
 ..\..\output\key.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_mmc.h
+..\..\output\key.o: ..\..\User\Common\Typedef.h
 ..\..\output\key.o: ..\..\Drivers\./SYSTEM/delay/delay.h

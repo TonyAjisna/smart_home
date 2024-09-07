@@ -59,6 +59,7 @@
 ..\..\output\atk_mw579.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pcd_ex.h
 ..\..\output\atk_mw579.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_hcd.h
 ..\..\output\atk_mw579.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_mmc.h
+..\..\output\atk_mw579.o: ..\..\User\Common\Typedef.h
 ..\..\output\atk_mw579.o: ..\..\Drivers\./BSP/ATK_MW579/atk_mw579_uart.h
 ..\..\output\atk_mw579.o: ..\..\Drivers\./SYSTEM/delay/delay.h
 ..\..\output\atk_mw579.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

@@ -58,6 +58,7 @@
 ..\..\output\main.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pcd_ex.h
 ..\..\output\main.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_hcd.h
 ..\..\output\main.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_mmc.h
+..\..\output\main.o: ..\..\User\Common\Typedef.h
 ..\..\output\main.o: ..\..\Drivers\./SYSTEM/delay/delay.h
 ..\..\output\main.o: ..\..\Drivers\./SYSTEM/usart/usart.h
 ..\..\output\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
@@ -65,4 +66,7 @@
 ..\..\output\main.o: ..\..\Drivers\./BSP/KEY/key.h
 ..\..\output\main.o: ..\..\Drivers\./BSP/LCD/lcd.h
 ..\..\output\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\..\output\main.o: ..\..\Drivers\./BSP/TIM/gtim.h
+..\..\output\main.o: ..\..\Drivers\./BSP/HCSR04/hcsr04.h
+..\..\output\main.o: ..\..\User\Common\common.h
 ..\..\output\main.o: ..\..\User\demo.h
